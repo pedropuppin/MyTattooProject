@@ -1,6 +1,7 @@
 class AddressesController < ApplicationController
   def new
     @address = Address.new
+    authorize @address
   end
 
   def create
@@ -11,9 +12,16 @@ class AddressesController < ApplicationController
     else
       render :new, status: :unprocessable_entity
     end
+    authorize @address
   end
 
   def update
+    if @address.update(address_params)
+      redirect_to root_path
+    else
+      render :new, status: :unprocessable_entity
+    end
+    authorize @address
   end
 
   private
