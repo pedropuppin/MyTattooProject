@@ -19,6 +19,7 @@ class PostsController < ApplicationController
       render :new, status: :unprocessable_entity
     end
     # skip_authorization
+    authorize @post
   end
 
   def edit
