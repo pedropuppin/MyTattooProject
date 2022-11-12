@@ -82,3 +82,6 @@ group :development do
 end
 
 gem 'omniauth-facebook'
+
+# Adds cloudinary for uder-side upload
+gem 'cloudinary'
