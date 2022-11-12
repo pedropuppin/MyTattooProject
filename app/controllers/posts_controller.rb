@@ -4,10 +4,12 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
+    authorize @post
   end
 
   def new
     @post = Post.new
+    authorize @post
   end
 
   def create
@@ -18,7 +20,6 @@ class PostsController < ApplicationController
     else
       render :new, status: :unprocessable_entity
     end
-    # skip_authorization
     authorize @post
   end
 
