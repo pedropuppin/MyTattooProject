@@ -13,7 +13,13 @@ class AddressesController < ApplicationController
     end
   end
 
+  def edit
+    @address = current_user.address
+  end
+
   def update
+    @address = Address.update(address_params)
+    redirect_to edit_user_registration_path
   end
 
   private
