@@ -17,7 +17,7 @@ class AddressesController < ApplicationController
 
   def update
     if @address.update(address_params)
-      redirect_to root_path
+      redirect_to root_path # redirecionar para pagina de perfil do usuário(artista)
     else
       render :new, status: :unprocessable_entity
     end
