@@ -49,6 +49,8 @@ gem "sassc-rails"
 # gem "image_processing", "~> 1.2"
 
 gem "devise"
+gem 'omniauth-facebook'
+gem 'omniauth-rails_csrf_protection'
 gem "autoprefixer-rails"
 gem "font-awesome-sass", "~> 6.1"
 gem "simple_form", github: "heartcombo/simple_form"
@@ -80,8 +82,6 @@ group :development do
   gem "better_errors"
   gem "binding_of_caller"
 end
-
-gem 'omniauth-facebook'
 
 # Adds cloudinary for uder-side upload
 gem 'cloudinary'
