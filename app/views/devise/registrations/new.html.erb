@@ -6,11 +6,17 @@
     <%= f.error_notification %>
 
     <div class="form-inputs">
-      <%= f.input :name,
+      <%= f.input :first_name,
                   required: true,
                   autofocus: true,
-                  placeholder: "user name",
-                  input_html: { autocomplete: "name" }%>
+                  placeholder: "First name",
+                  input_html: { autocomplete: "first_name" }%>
+
+      <%= f.input :last_name,
+                  required: true,
+                  autofocus: true,
+                  placeholder: "Last name",
+                  input_html: { autocomplete: "last_name" }%>
 
       <%= f.input :phone,
                   required: true,

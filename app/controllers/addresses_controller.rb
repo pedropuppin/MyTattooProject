@@ -1,6 +1,7 @@
 class AddressesController < ApplicationController
   def new
     @address = Address.new
+    authorize @address
   end
 
   def create
@@ -11,6 +12,7 @@ class AddressesController < ApplicationController
     else
       render :new, status: :unprocessable_entity
     end
+    authorize @address
   end
 
   def edit
@@ -20,6 +22,7 @@ class AddressesController < ApplicationController
   def update
     @address = Address.update(address_params)
     redirect_to edit_user_registration_path
+    authorize @address
   end
 
   private
