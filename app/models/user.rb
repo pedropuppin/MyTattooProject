@@ -5,11 +5,5 @@ class User < ApplicationRecord
   :recoverable, :rememberable, :validatable
 
   has_one :address, dependent: :destroy
-
-  after_save :show_message
-
-  def show_message
-    #flash[:notice] = "Post successfully created"
-    #render flash[:alert]
-  end
+  has_one_attached :photo
 end

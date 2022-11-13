@@ -26,6 +26,8 @@
                   hint: "We need your current password to confirm your changes",
                   required: true,
                   input_html: { autocomplete: "current-password" } %>
+      <%= f.input :photo, as: :file %>
+      
       <% if @user.role == "artist" %>
         <%= link_to "Edit your address", edit_addresses_path %>
       <% end %>
