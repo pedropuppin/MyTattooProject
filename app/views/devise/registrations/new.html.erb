@@ -38,8 +38,6 @@
                   required: true,
                   input_html: { autocomplete: "new-password" } %>
 
-      <%= f.input :photo, as: :file %>
-
       <%= f.collection_radio_buttons :role, [['artist', 'artist'], ['client', 'client']], :first, :last %>
     </div>
 
