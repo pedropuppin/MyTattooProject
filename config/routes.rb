@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
   resources :addresses, only: %i[new create]
   resources :artists, only: [] do
-    resources :quotations, only: %i[new create]
+    resources :quotations, only: %i[index show new create]
   end
   resources :quotations, only: :destroy
   root to: "pages#home"

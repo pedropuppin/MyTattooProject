@@ -1,14 +1,18 @@
 <div class="container">
-  <%= simple_form_for @address do |f|%>
-    <%= f.input :zipcode %>
-    <%= f.input :country, as: :string %>
-    <%= f.input :city %>
-    <%= f.input :street%>
-    <%= f.input :number %>
+  <div class="row justify-content-center align-items-center min-vh-100">
+    <div class="col-6 border rounded p-5 bg-white">
+      <%= simple_form_for @address do |f|%>
+        <%= f.input :zipcode %>
+        <%= f.input :country, as: :string %>
+        <%= f.input :city %>
+        <%= f.input :street%>
+        <%= f.input :number %>
 
-    <div class="form-actions">
-      <%= f.button :submit, "Submit" %>
+        <div class="form-actions">
+          <%= f.button :submit, "Submit" %>
+        </div>
+
+      <% end %>
     </div>
-
-  <% end %>
+  </div>
 </div>
