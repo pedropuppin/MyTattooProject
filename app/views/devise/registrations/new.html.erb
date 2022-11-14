@@ -1,50 +1,52 @@
 <div class="container">
-  <h2>Sign up</h2>
+  <div class="row justify-content-center align-items-center min-vh-100">
+    <div class="col-6 border rounded p-5 bg-white">
+      <h2>Sign up</h2>
 
-  <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), data: { turbo: :false }) do |f| %>
-    <%= f.error_notification %>
+      <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), data: { turbo: :false }) do |f| %>
+        <%= f.error_notification %>
+        <div class="form-inputs">
+          <%= f.input :first_name,
+                      required: true,
+                      autofocus: true,
+                      placeholder: "First name" %>
 
-    <div class="form-inputs">
-      <%= f.input :first_name,
-                  required: true,
-                  autofocus: true,
-                  placeholder: "First name",
-                  input_html: { autocomplete: "first_name" }%>
+          <%= f.input :last_name,
+                      required: true,
+                      autofocus: true,
+                      placeholder: "Last name" %>
 
-      <%= f.input :last_name,
-                  required: true,
-                  autofocus: true,
-                  placeholder: "Last name",
-                  input_html: { autocomplete: "last_name" }%>
+          <%= f.input :phone,
+                      autofocus: true,
+                      placeholder: "(xx) xxx-xxx-xxx" %>
 
-      <%= f.input :phone,
-                  required: true,
-                  autofocus: true,
-                  placeholder: "(xx) xxx-xxx-xxx",
-                  input_html: { autocomplete: "phone" }%>
+          <%= f.input :email,
+                      required: true,
+                      autofocus: true,
+                      input_html: { autocomplete: "email" } %>
 
-      <%= f.input :email,
-                  required: true,
-                  autofocus: true,
-                  input_html: { autocomplete: "email" }%>
+          <%= f.input :photo, as: :file  %>
 
-      <%= f.input :password,
-                  required: true,
-                  hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
-                  input_html: { autocomplete: "new-password" } %>
+          <%= f.input :password,
+                      required: true,
+                      placeholder: "***********",
+                      hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
+                      input_html: { autocomplete: "new-password" } %>
 
-      <%= f.input :password_confirmation,
-                  required: true,
-                  input_html: { autocomplete: "new-password" } %>
+          <%= f.input :password_confirmation,
+                      required: true,
+                      placeholder: "***********",
+                      input_html: { autocomplete: "new-password" } %>
 
-      <%= f.collection_radio_buttons :role, [['artist', 'artist'], ['client', 'client']], :first, :last %>
+          <p class="mt-4">Você é um tatuador?</p>
+          <%= f.collection_radio_buttons :role, [['artist', 'Sim'], ['client', 'Não']], :first, :last, required: true %>
+        </div>
+
+        <div class="form-actions">
+          <%= f.button :submit, "Finalizar", data: { turbo: false }, class: "btn btn-flat mt-3" %>
+        </div>
+
+      <% end %>
     </div>
-
-    <div class="form-actions">
-      <%= f.button :submit, "Sign up", data: { turbo: false } %>
-    </div>
-
-  <% end %>
-
-  <%= render "devise/shared/links" %>
+  </div>
 </div>

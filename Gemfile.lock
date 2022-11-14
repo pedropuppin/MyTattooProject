@@ -324,6 +324,7 @@ DEPENDENCIES
   font-awesome-sass (~> 6.1)
   jbuilder
   jsbundling-rails
+  omniauth
   omniauth-facebook
   omniauth-rails_csrf_protection
   pg (~> 1.1)
