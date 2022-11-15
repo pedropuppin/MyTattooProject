@@ -22,7 +22,7 @@ class QuotationsController < ApplicationController
     @quotation.artist = @artist
     @quotation.user = current_user
     if @quotation.save
-      redirect_to root_path # redirecionar para o chat de conversa
+      redirect_to quotation_massage_path # redirecionar para o chat de conversa
     else
       render :new, status: :unprocessable_entity
     end
@@ -32,7 +32,7 @@ class QuotationsController < ApplicationController
   def destroy
     # @quotation = quotation.find(params[:id])
     @quotation.delete
-    redirect_to quotations_path, status: :see_other # redirecionar para suas quotations
+    redirect_to quotation_path, status: :see_other # redirecionar para suas quotations
     authorize @quotation
   end
 

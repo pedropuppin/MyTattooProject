@@ -1,6 +1,7 @@
 class Quotation < ApplicationRecord
   belongs_to :user
   belongs_to :artist, class_name: "User"
+  has_many :messages, dependent: :destroy
   has_many_attached :photos
 
   SIZES = ['Small', 'Medium', 'Large']

@@ -15,7 +15,8 @@
                 <p><strong>Data:</strong> <%= quotation.date %></p>
                 <p><strong>Sua ideia:</strong> <%= quotation.description %></p>
                 <div class="forget">
-                  <%= link_to "Delete quotation", artist_quotations_path(quotation), class: "btn btn-sm btn-outline-danger position-absolute", style: 'text-decoration: none; right: 15px; bottom: 15px;', data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to delete this record?" } %>
+                  <%= link_to "Delete quotation", quotation_path(quotation), class: "btn btn-sm btn-outline-danger position-absolute", style: 'text-decoration: none; right: 15px; bottom: 15px;', data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to delete this record?" } %>
+                  <%# deleta, mas aparece que eu não tenho permição%>
                 </div>
             </div>
         <% end %>
