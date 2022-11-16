@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row justify-content-center align-items-center min-vh-100">
     <div class="col-6 border rounded p-5 bg-white">
-      <%= simple_form_for @address do |f|%>
+      <%= simple_form_for @address, url: addresses_path do |f|%>
         <%= f.input :zipcode %>
         <%= f.input :country, as: :string %>
         <%= f.input :city %>
@@ -9,7 +9,7 @@
         <%= f.input :number %>
 
         <div class="form-actions">
-          <%= f.button :submit, "Submit", class: "btn btn-dark" %>
+          <%= f.button :submit, "Update", class: "btn btn-dark" %>
         </div>
 
       <% end %>
