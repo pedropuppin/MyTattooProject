@@ -17,12 +17,14 @@ class AddressesController < ApplicationController
 
   def edit
     @address = current_user.address
+    authorize @address
   end
 
   def update
-    @address = Address.update(address_params)
-    redirect_to edit_user_registration_path
+    @address = current_user.address
+    @address.update(address_params)
     authorize @address
+    redirect_to edit_user_registration_path
   end
 
   private
