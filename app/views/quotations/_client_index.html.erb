@@ -1,0 +1,21 @@
+<% @quotations.each do | quotation | %>
+  <% artist = User.find(quotation.artist_id) %>
+  <% user = User.find(quotation.user_id) %>
+  <div class="card-product position-relative mb-4">
+    <% if artist.photo.attached? %>
+      <%= cl_image_tag artist.photo.key %>
+    <% else %>
+      <%= image_tag "https://cdn-icons-png.flaticon.com/512/149/149071.png" %>
+    <% end %>
+    <div class="card-product-infos">
+      <h2>Artista: <%= artist.first_name %></h2>
+      <p><strong>Data:</strong> <%= quotation.date %></p>
+      <p><strong>Sua ideia:</strong> <%= quotation.description %></p>
+      <%= link_to "Mais iformações", quotation_path(quotation) %>
+      <div class="forget">
+        <%= link_to "Delete quotation", quotation_path(quotation), class: "btn btn-sm btn-outline-danger position-absolute", style: 'text-decoration: none; right: 15px; bottom: 15px;', data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to delete this record?" } %>
+        <%# deleta, mas aparece que eu não tenho permição%>
+      </div>
+    </div>
+  </div>
+<% end %>

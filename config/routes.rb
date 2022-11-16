@@ -5,8 +5,9 @@ Rails.application.routes.draw do
     resources :quotations, only: %i[index new create]
   end
   resources :quotations, only: %i[show destroy] do
-    resources :messages, only: :show
+    resources :messages, only: :index
   end
+  get '/quotations/:quotation_id/messages', to: 'messages#messages', as: :messages
   root to: "pages#home"
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

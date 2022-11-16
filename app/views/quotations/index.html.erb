@@ -1,26 +1,13 @@
 <div class="container py-5 mt-5">
   <div class="d-flex align-items-center">
     <div class="col-12 col-md-8 offset-lg-2">
-
       <h3 class="mb-4">Meus projetos</h3>
-
       <span class="mb-2 d-block"><small><em class="text-muted"><%= "Você não marcou nenhum projeto ainda!" if @quotations.empty? %></em></small></span>
-
-        <% @quotations.each do | quotation | %>
-          <% artist = User.find(quotation.artist_id) %>
-          <% user = User.find(quotation.user_id) %>
-            <div class="card-product position-relative">
-              <div class="card-product-infos">
-                <h2>Artista: <%= artist.first_name %></h2>
-                <p><strong>Data:</strong> <%= quotation.date %></p>
-                <p><strong>Sua ideia:</strong> <%= quotation.description %></p>
-                <div class="forget">
-                  <%= link_to "Delete quotation", quotation_path(quotation), class: "btn btn-sm btn-outline-danger position-absolute", style: 'text-decoration: none; right: 15px; bottom: 15px;', data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to delete this record?" } %>
-                  <%# deleta, mas aparece que eu não tenho permição%>
-                </div>
-            </div>
-        <% end %>
-      </div>
+      <% if current_user.role == "client" %>
+        <%= render "client_index" %>
+      <% else %>
+        <%= render "artist_index" %>
+      <% end %>
     </div>
   </div>
 </div>

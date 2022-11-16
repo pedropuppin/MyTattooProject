@@ -22,7 +22,7 @@ class QuotationsController < ApplicationController
     @quotation.artist = @artist
     @quotation.user = current_user
     if @quotation.save
-      redirect_to quotation_massage_path # redirecionar para o chat de conversa
+      redirect_to artist_quotations_path # redirecionar para o chat de conversa (rota - quotation_message_path)
     else
       render :new, status: :unprocessable_entity
     end
