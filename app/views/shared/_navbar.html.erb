@@ -25,13 +25,15 @@
           </li>
 
           <li class="nav-item dropdown">
-            <% avatar_url = current_user.facebook_picture_url || "https://cdn-icons-png.flaticon.com/512/149/149071.png" %>
-            <%= image_tag avatar_url, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-
+            <% if current_user.photo.attached? %>
+              <%= cl_image_tag current_user.photo.key, transformation: [{gravity: "face", height: 400, width: 400, crop: "thumb"}], class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+            <% else %>
+              <%= image_tag "https://cdn-icons-png.flaticon.com/512/149/149071.png", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+            <% end %>
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
               <%= link_to "Menssagens", "quotation_messages_path(@quotation)", class: "dropdown-item" %> <%# link_to suas messages como faze? %>
               <%= link_to "Meus projetos", artist_quotations_path(current_user), class: "dropdown-item" %>
-              <%= link_to "Configurações", "#", class: "dropdown-item" %> <%# link_to profile page %>
+              <%= link_to "Configurações", edit_user_registration_path, class: "dropdown-item" %>
               <hr>
               <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
             </div>

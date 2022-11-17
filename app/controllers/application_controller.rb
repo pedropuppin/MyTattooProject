@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
   before_action :authenticate_user!
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :dispatch_user
+  add_flash_types :info, :notice
 
   include Pundit::Authorization
 
@@ -25,7 +26,7 @@ class ApplicationController < ActionController::Base
   def dispatch_user
     return unless current_user && request.get?
 
-    path = new_address_path if current_user.role == "artist" && current_user.address.nil?
+    path = new_addresses_path if current_user.role == "artist" && current_user.address.nil?
 
     redirect_to path unless path.nil? || path == request.path
   end
@@ -34,5 +35,6 @@ class ApplicationController < ActionController::Base
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: %i[first_name last_name phone role photo])
+    devise_parameter_sanitizer.permit(:account_update, keys: %i[first_name last_name phone role photo])
   end
 end
