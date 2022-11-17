@@ -1,17 +1,20 @@
 <% @quotations.each do | quotation | %>
   <% artist = User.find(quotation.artist_id) %>
   <% user = User.find(quotation.user_id) %>
-  <div class="card-product position-relative mb-4">
+
+  <div class="card-product m-4 col-12 col-sm-6 col-md-4">
     <% if user.photo.attached? %>
       <%= cl_image_tag artist.photo.key %>
     <% else %>
       <%= image_tag "https://cdn-icons-png.flaticon.com/512/149/149071.png" %>
     <% end %>
+
     <div class="card-product-infos">
-      <h2>Client: <%= user.first_name %></h2>
+      <h2>Nome do cliente: <%= user.first_name.capitalize %></h2>
+      <p><strong>Ideia da tattoo:</strong> <%= quotation.description %></p>
       <p><strong>Data:</strong> <%= quotation.date %></p>
-      <p><strong>Tattoo ideia:</strong> <%= quotation.description %></p>
-      <%= link_to "Mais iformações", quotation_path(quotation), class: "btn btn-sm position-absolute", style: 'text-decoration: none; right: 15px; bottom: 15px;' %>
+      <%= link_to "informações", quotation_path(quotation) %>
     </div>
   </div>
+
 <% end %>

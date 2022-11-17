@@ -5,7 +5,7 @@ Rails.application.routes.draw do
     resources :quotations, only: %i[index new create]
   end
   resources :quotations, only: %i[show destroy] do
-    resources :messages, only: :index
+    resources :messages, only: %i[index create]
   end
   get '/quotations/:quotation_id/messages', to: 'messages#messages', as: :messages
   root to: "pages#home"

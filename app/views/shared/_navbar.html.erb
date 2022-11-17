@@ -29,7 +29,7 @@
             <%= image_tag avatar_url, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
 
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-              <%= link_to "Menssagens", "#", class: "dropdown-item" %> <%# link_to suas messages %>
+              <%= link_to "Menssagens", "quotation_messages_path(@quotation)", class: "dropdown-item" %> <%# link_to suas messages como faze? %>
               <%= link_to "Meus projetos", artist_quotations_path(current_user), class: "dropdown-item" %>
               <%= link_to "Configurações", "#", class: "dropdown-item" %> <%# link_to profile page %>
               <hr>

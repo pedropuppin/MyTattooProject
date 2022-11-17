@@ -1,13 +1,12 @@
 <div class="container py-5 mt-5">
-  <div class="d-flex align-items-center">
-    <div class="col-12 col-md-8 offset-lg-2">
-      <h3 class="mb-4">Meus projetos</h3>
-      <span class="mb-2 d-block"><small><em class="text-muted"><%= "Você não marcou nenhum projeto ainda!" if @quotations.empty? %></em></small></span>
-      <% if current_user.role == "client" %>
-        <%= render "client_index" %>
-      <% else %>
-        <%= render "artist_index" %>
-      <% end %>
-    </div>
+  <div class="row">
+    <h3 class="mb-4">Meus projetos</h3>
+    <span class="mb-2 d-block"><small><em class="text-muted"><%= "Você não marcou nenhum projeto ainda!" if @quotations.empty? %></em></small></span>
+    <% if current_user.role == "client" %>
+      <%= render "client_index" %>
+    <% else %>
+      <%= render "artist_index" %>
+    <% end %>
+  </div>
   </div>
 </div>
