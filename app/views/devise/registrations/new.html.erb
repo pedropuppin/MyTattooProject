@@ -38,12 +38,12 @@
                       placeholder: "***********",
                       input_html: { autocomplete: "new-password" } %>
 
-          <p class="mt-4">Você é um tatuador?</p>
+          <p class="mt-4">Are you a tattoo artist?</p>
           <%= f.collection_radio_buttons :role, [['artist', 'Sim'], ['client', 'Não']], :first, :last, required: true %>
-        </div>
+
 
         <div class="form-actions">
-          <%= f.button :submit, "Finalizar", data: { turbo: false }, class: "btn btn-flat mt-3" %>
+          <%= f.button :submit, "Finalizar", data: { turbo: false }, class: "btn btn-dark mt-3" %>
         </div>
 
       <% end %>
