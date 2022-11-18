@@ -1,5 +1,6 @@
-body{
+.gradient-background {
   background: linear-gradient(to right, #28313B, #485461);
+  min-height: 100vh;
 }
 
 .card-product {
@@ -10,10 +11,12 @@ body{
   align-items: center;
   border: 1px solid #ffffff40;
   box-shadow: 0 18px 100px -60px black;
+  position: relative;
 }
 
 .card-product img {
   width: 120px;
+  border-radius: 50%;
   margin-bottom: 1rem;
   margin-left: auto;
   margin-right: auto;
@@ -42,8 +45,9 @@ body{
   padding: 16px;
 }
 
-.card-product ul li{
-  display: inline;
+.card-links{
+  align-items: center;
+  margin-bottom: 1rem;
 }
 
 .card-product a{
@@ -58,10 +62,23 @@ body{
   text-transform: uppercase;
   letter-spacing: 2px;
   transition: background .5s;
-
 }
 
 .card-product a:hover{
   background-color: rgba(0, 0, 0, .75);
   cursor: pointer;
+}
+
+.card-product .delete{
+  color: black;
+  background: none;
+  transition: background .5s;
+  position: absolute;
+  top: 5px;
+  right: 5px;
+}
+
+.card-product .delete:hover{
+  background: none;
+  color: rgba(255, 0, 0, 0.75);
 }

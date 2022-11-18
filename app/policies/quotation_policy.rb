@@ -4,8 +4,7 @@ class QuotationPolicy < ApplicationPolicy
   end
 
   def create?
-    user.role == "client"
-    # o artista também deveria poder criar um orçamento, mas ele não pode criar com ele mesmo
+    true
   end
 
   def destroy?

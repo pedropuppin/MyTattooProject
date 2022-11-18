@@ -3,7 +3,7 @@
   <% user = User.find(quotation.user_id) %>
   <div class="card-product m-4 col-12 col-sm-6 col-md-4">
     <% if artist.photo.attached? %>
-      <%= cl_image_tag artist.photo.key %>
+      <%= cl_image_tag artist.photo.key, transformation: [{gravity: "face", height: 400, width: 400, crop: "thumb"}] %>
     <% else %>
       <%= image_tag "https://cdn-icons-png.flaticon.com/512/149/149071.png" %>
     <% end %>
@@ -11,14 +11,12 @@
       <h2>Nome do artista: <%= artist.first_name %></h2>
       <p><strong>Sua ideia:</strong> <%= quotation.description %></p>
       <p><strong>Data:</strong> <%= quotation.date %></p>
-      <ul>
-        <li>
-          <%= link_to "informações", quotation_path(quotation) %>
-        </li>
-        <li>
-          <%= link_to "apagar", quotation_path(quotation), data: { turbo_method: :delete, turbo_confirm: "Tem certeza que quer deletar o registro dessa sessão?" } %>
-        </li>
-      </ul>
+      <div class="card-links">
+        <%= link_to "informações", quotation_path(quotation), class: "mb-4" %>
+      </div>
+      <%= link_to quotation_path(quotation), class: "delete", data: { turbo_method: :delete, turbo_confirm: "Tem certeza que quer deletar o registro dessa sessão?" } do %>
+        <i class="fa-solid fa-trash"></i>
+      <% end %>
     </div>
   </div>
 <% end %>

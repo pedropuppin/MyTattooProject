@@ -8,6 +8,10 @@ class MessagesController < ApplicationController
   def messages
     # lista de mesnagens dos usuários de uma quotation
     # mostrar as mensagens (@messagens)
+    @quotation = Quotation.find(params[:quotation_id])
+    @messages = @quotation.messages
+    @message = Message.new
+    authorize @quotation, policy_class: MessagePolicy
   end
 
   def create
@@ -20,6 +24,7 @@ class MessagesController < ApplicationController
     else
       render "chatrooms/show", status: :unprocessable_entity
     end
+    authorize @quotation, policy_class: MessagePolicy
   end
 
   private
