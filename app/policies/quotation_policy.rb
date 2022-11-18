@@ -1,16 +1,24 @@
 class QuotationPolicy < ApplicationPolicy
-  def create?
-    user.role == "client"
+  def show?
+    record.user == user
   end
 
-  def destroy
-    user.role == "artist"
+  def create?
+    true
+  end
+
+  def destroy?
+    record.user == user
   end
 
   class Scope < Scope
     # NOTE: Be explicit about which records you allow access to!
     def resolve
-      scope.where(user: user)
+      if user.role == "client"
+        scope.where(user: user)
+      else
+        scope.where(artist: user)
+      end
     end
   end
 end
