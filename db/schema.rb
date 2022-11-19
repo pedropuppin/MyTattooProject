@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_12_181111) do
+ActiveRecord::Schema[7.0].define(version: 2022_11_18_001143) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -54,6 +54,16 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_12_181111) do
     t.index ["user_id"], name: "index_addresses_on_user_id"
   end
 
+  create_table "messages", force: :cascade do |t|
+    t.string "content"
+    t.bigint "quotation_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "user_id", null: false
+    t.index ["quotation_id"], name: "index_messages_on_quotation_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
+  end
+
   create_table "posts", force: :cascade do |t|
     t.text "content"
     t.bigint "user_id", null: false
@@ -68,9 +78,11 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_12_181111) do
     t.date "date"
     t.text "description"
     t.bigint "user_id", null: false
-    t.integer "artist_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "artist_id", null: false
+    t.string "photos"
+    t.index ["artist_id"], name: "index_quotations_on_artist_id"
     t.index ["user_id"], name: "index_quotations_on_user_id"
   end
 
@@ -91,6 +103,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_12_181111) do
     t.string "last_name"
     t.string "token"
     t.datetime "token_expiry"
+    t.string "photo"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
@@ -98,6 +111,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_12_181111) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "addresses", "users"
+  add_foreign_key "messages", "quotations"
+  add_foreign_key "messages", "users"
   add_foreign_key "posts", "users"
   add_foreign_key "quotations", "users"
+  add_foreign_key "quotations", "users", column: "artist_id"
 end

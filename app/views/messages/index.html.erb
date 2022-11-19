@@ -1,0 +1,25 @@
+<h1>lista de mesagens</h1>
+
+<span class="mb-2 d-block"><small><em class="text-muted"><%= "Você não marcou nenhum projeto ainda!" if @quotations.empty? %></em></small></span>
+
+<div class="container chatroom">
+  <div class="messages">
+    <% @quotations.each do |quotation| %>
+      <%= link_to messages_path(quotation) do %>
+        <div id="quotation-<%= quotation.id %>">
+          <small>
+            <% if current_user.role == 'client' %>
+              <strong><%= quotation.artist.first_name %></strong>
+            <% else %>
+              <strong><%= quotation.user.first_name %></strong>
+            <% end %>
+            <i><%= quotation.created_at.strftime("%a %b %e at %l:%M %p") %></i>
+          </small>
+
+          <p><%= quotation.messages.last&.content&.truncate(10) %></p>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+
+</div>

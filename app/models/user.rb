@@ -6,7 +6,12 @@ class User < ApplicationRecord
          :omniauthable, omniauth_providers: [:facebook]
 
   has_one :address, dependent: :destroy
+  has_one_attached :photo
   has_many :quotations, dependent: :destroy
+  has_many :messages
+
+  validates :first_name, :last_name, :role, :email, presence: true
+  validates :email, uniqueness: true
 
   def self.find_for_facebook_oauth(auth)
     user_params = auth.slice("provider", "uid")
@@ -22,7 +27,7 @@ class User < ApplicationRecord
       user.update(user_params)
     else
       user = User.new(user_params)
-      user.password = Devise.friendly_token[0,20]  # Fake password for validation
+      user.password = Devise.friendly_token[0, 20]  # Fake password for validation
       user.save
     end
 
