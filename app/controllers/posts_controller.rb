@@ -3,7 +3,7 @@ class PostsController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[index show]
 
   def index
-    @posts = policy_scope(Post)
+    @posts = Post.group_em(policy_scope(Post).where(user: current_user), 4)
   end
 
   def show
