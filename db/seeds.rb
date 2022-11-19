@@ -31,7 +31,7 @@
 
   # Creates 5 "post" objects
   5.times do |k|
-    url = Faker::LoremFlickr.image(size: "#{rand(200..1000)}x#{rand(200..1000)}", search_terms: ['tattoo'])
+    url = Faker::LoremFlickr.image(size: "#{rand(200..800)}x#{rand(200..800)}", search_terms: ['tattoo'])
     image = URI.open(url)
 
     post = Post.new(content: Faker::Lorem.paragraph, user: user)

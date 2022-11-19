@@ -1,5 +1,6 @@
 <div class="gradient-background">
   <div class="container py-5 mt-5">
+  <%= link_to 'Back', :back %>
     <div class="row">
       <h3 class="mb-4">Meus projetos</h3>
       <span class="mb-2 d-block"><small><em class="text-muted"><%= "Você não marcou nenhum projeto ainda!" if @quotations.empty? %></em></small></span>
@@ -8,7 +9,6 @@
       <% else %>
         <%= render "artist_index" %>
       <% end %>
-    </div>
     </div>
   </div>
 </div>
