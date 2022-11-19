@@ -89,3 +89,7 @@ end
 
 # Adds cloudinary for uder-side upload
 gem 'cloudinary'
+
+# Adds faker and open-uri for seeding purposes
+gem 'faker'
+gem 'open-uri'
