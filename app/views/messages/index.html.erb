@@ -2,7 +2,7 @@
   <h1>Suas conversas</h1>
 
   <span class="mb-2 d-block"><small><em class="text-muted"><%= "Você não marcou nenhum projeto ainda!" if @quotations.empty? %></em></small></span>
-
+  <%= link_to 'Back', :back %>
   <div class="container quotation">
     <div class="messages">
       <% @quotations.each do |quotation| %>
