@@ -1,0 +1,10 @@
+
+<div class="container">
+  <% @posts.each do |post| %>
+    <div class="row">
+      <div class="col">
+        <%= cl_image_tag post.photo.key %>
+      </div>
+    </div>
+  <% end %>
+</div>
