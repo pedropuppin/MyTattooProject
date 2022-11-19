@@ -1,10 +1,14 @@
+<% post_group = @posts.group_by { |post| post.id % 4 } %>
+<% post_group = post_group.values %>
 
 <div class="container">
-  <% @posts.each do |post| %>
-    <div class="row">
-      <div class="col">
-        <%= cl_image_tag post.photo.key %>
+  <div class="d-flex">
+    <% post_group.each do |group| %>
+      <div class="d-flex flex-column w-25">
+        <% group.each do |post| %>
+          <%= cl_image_tag post.photo.key, class: 'img-fluid post-preview w-100' %>
+        <% end %>
       </div>
-    </div>
-  <% end %>
+    <% end %>
+  </div>
 </div>
