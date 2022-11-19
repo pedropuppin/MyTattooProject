@@ -11,3 +11,5 @@ class QuotationsController < ApplicationController
   def new
     @quotation = Quotation.new
   end
+
+end
