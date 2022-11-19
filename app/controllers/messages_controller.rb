@@ -19,7 +19,9 @@ class MessagesController < ApplicationController
     @message = Message.new(message_params)
     @message.quotation = @quotation
     @message.user = current_user
-    if @message.save
+    if @message.content.empty?
+      puts ""
+    elsif @message.save
       QuotationChannel.broadcast_to(
         @quotation,
         render_to_string(partial: "message", locals: { message: @message })
