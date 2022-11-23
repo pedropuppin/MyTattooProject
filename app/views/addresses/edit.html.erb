@@ -2,17 +2,87 @@
   <div class="row justify-content-center align-items-center min-vh-100">
     <div class="col-6 border rounded p-5 bg-white">
       <%= simple_form_for @address, url: addresses_path do |f|%>
-        <%= f.input :zipcode %>
-        <%= f.input :country, as: :string %>
-        <%= f.input :city %>
-        <%= f.input :street%>
+        <%= f.input :zipcode, input_html: { onblur: "pesquisacep(this.value)" } %>
+        <%= f.input :street %>
         <%= f.input :number %>
+        <%= f.input :neighborhood %>
+        <%= f.input :city %>
+        <%= f.input :state %>
+        <%= f.input :country, as: :string %>
 
         <div class="form-actions">
-          <%= f.button :submit, "Update", class: "btn btn-dark" %>
+          <%= f.button :submit, "Submit", class: "btn btn-dark" %>
         </div>
 
       <% end %>
     </div>
   </div>
 </div>
+
+<script>
+
+    function limpa_formulário_cep() {
+            //Limpa valores do formulário de cep.
+            document.getElementById('address_street').value=("");
+            document.getElementById('address_neighborhood').value=("");
+            document.getElementById('address_city').value=("");
+            document.getElementById('address_state').value=("");
+    }
+
+    function meu_callback(conteudo) {
+        if (!("erro" in conteudo)) {
+            //Atualiza os campos com os valores.
+            document.getElementById('address_street').value=(conteudo.logradouro);
+            document.getElementById('address_neighborhood').value=(conteudo.bairro);
+            document.getElementById('address_city').value=(conteudo.localidade);
+            document.getElementById('address_state').value=(conteudo.uf);
+        } //end if.
+        else {
+            //CEP não Encontrado.
+            limpa_formulário_cep();
+            alert("CEP não encontrado.");
+        }
+    }
+
+    function pesquisacep(valor) {
+
+        //Nova variável "cep" somente com dígitos.
+        var cep = valor.replace(/\D/g, '');
+
+        //Verifica se campo cep possui valor informado.
+        if (cep != "") {
+
+            //Expressão regular para validar o CEP.
+            var validacep = /^[0-9]{8}$/;
+
+            //Valida o formato do CEP.
+            if(validacep.test(cep)) {
+
+                //Preenche os campos com "..." enquanto consulta webservice.
+                document.getElementById('address_street').value="...";
+                document.getElementById('address_neighborhood').value="...";
+                document.getElementById('address_city').value="...";
+                document.getElementById('address_state').value="...";
+
+                //Cria um elemento javascript.
+                var script = document.createElement('script');
+
+                //Sincroniza com o callback.
+                script.src = 'https://viacep.com.br/ws/'+ cep + '/json/?callback=meu_callback';
+
+                //Insere script no documento e carrega o conteúdo.
+                document.body.appendChild(script);
+
+            } //end if.
+            else {
+                //cep é inválido.
+                limpa_formulário_cep();
+                alert("Formato de CEP inválido.");
+            }
+          } //end if.
+          else {
+              //cep sem valor, limpa formulário.
+              limpa_formulário_cep();
+          }
+      };
+</script>
