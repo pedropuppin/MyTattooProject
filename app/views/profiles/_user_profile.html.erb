@@ -6,8 +6,10 @@
   <% end %>
   <h1><%= @user.full_name %></h1>
   <p><%= @user.address.city if @user.role == "artist" %></p>
-  <%= link_to "Criar postagem", new_post_path if current_user.role == "artist" && @user == current_user %> <br>
-  <%= link_to "Pedir orçamento", new_artist_quotation_path(@user) if @user != current_user %>
-  <%= link_to "Editar perfil", edit_user_registration_path if @user == current_user%> <br>
+  <% if user_signed_in? %>
+    <%= link_to "Criar postagem", new_post_path if current_user.role == "artist" && @user == current_user %> <br>
+    <%= link_to "Editar perfil", edit_user_registration_path if @user == current_user%> <br>
+  <% end %>
+  <%= link_to "Pedir orçamento", new_artist_quotation_path(@user) if @user != current_user %><br>
   <%= link_to 'Back', :back %>
 </div>

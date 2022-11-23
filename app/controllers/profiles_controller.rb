@@ -1,4 +1,5 @@
 class ProfilesController < ApplicationController
+  skip_before_action :authenticate_user!, only: %i[post_user_profile show]
   def show
     @user = current_user
     authorize @user
