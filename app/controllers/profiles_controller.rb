@@ -4,8 +4,8 @@ class ProfilesController < ApplicationController
     authorize @user
   end
 
-  def set_full_name
-    @user = current_user
-    [@user.first_name, @user.last_name].join(' ')
+  def post_user_profile
+    @user = User.find(params[:user_id])
+    authorize @user
   end
 end

@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   end
   get '/quotations/:quotation_id/messages', to: 'messages#messages', as: :messages
   get '/messages', to: 'messages#index', as: :messages_index
+  get 'profiles/:user_id', to: 'profiles#post_user_profile', as: :post_user_profile
   root to: "pages#home"
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
