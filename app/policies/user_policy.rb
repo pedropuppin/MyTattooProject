@@ -9,4 +9,8 @@ class UserPolicy < ApplicationPolicy
   def show?
     true
   end
+
+  def post_user_profile?
+    true
+  end
 end
