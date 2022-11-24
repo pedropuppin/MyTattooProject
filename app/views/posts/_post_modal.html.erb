@@ -12,7 +12,7 @@
             <% else %>
               <%= image_tag "https://cdn-icons-png.flaticon.com/512/149/149071.png", class: "post-avatar" %>
             <% end %>
-            <h5 class="card-title"><%= link_to post.user.full_name, post_user_profile_path(post.user), class: "text-decoration-none" %></h5>
+            <h5 class="card-title"><%= link_to post.user.full_name, user_profile_path(post.user), class: "text-decoration-none" %></h5>
 
             <% if post.user == current_user %>
               <div class="dropdown">
