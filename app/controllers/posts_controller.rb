@@ -44,6 +44,7 @@ class PostsController < ApplicationController
   def destroy
     authorize @post
     @post.destroy
+    redirect_to root_path
   end
 
   private

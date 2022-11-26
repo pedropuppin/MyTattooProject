@@ -1,11 +1,8 @@
 class ProfilesController < ApplicationController
-  def show
-    @user = current_user
-    authorize @user
-  end
+  skip_before_action :authenticate_user!, only: %i[post_user_profile show]
 
-  def set_full_name
-    @user = current_user
-    [@user.first_name, @user.last_name].join(' ')
+  def show
+    @user = User.find(params[:user_id])
+    authorize @user
   end
 end
