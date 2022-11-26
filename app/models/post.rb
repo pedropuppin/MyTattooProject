@@ -2,6 +2,7 @@ class Post < ApplicationRecord
   belongs_to :user
   has_many :comments, dependent: :destroy
   has_one_attached :photo
+  has_many :likes, dependent: :destroy
 
   def self.group_em(posts, ngroups)
     n_per_group, left_over = posts.size.divmod(ngroups)

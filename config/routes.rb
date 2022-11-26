@@ -13,8 +13,10 @@ Rails.application.routes.draw do
   root to: "pages#home"
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-  resources :posts, except: :index do
-    resources :comments, only: :create
+  resources :posts do
+    resources :comments, except: :index
+    resources :likes, only: :create
   end
   resources :comments, only: %i[edit update destroy]
+  resources :likes, only: %i[destroy]
 end

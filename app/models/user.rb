@@ -9,6 +9,7 @@ class User < ApplicationRecord
   has_one_attached :photo
   has_many :quotations, dependent: :destroy
   has_many :messages
+  has_many :likes, dependent: :destroy
 
   validates :first_name, :last_name, :role, :email, presence: true
   validates :email, uniqueness: true
