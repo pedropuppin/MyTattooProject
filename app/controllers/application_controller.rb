@@ -26,7 +26,7 @@ class ApplicationController < ActionController::Base
   def dispatch_user
     return unless current_user && request.get?
 
-    path = new_addresses_path if current_user.role == "artist" && current_user.address.nil?
+    path = new_address_path if current_user.role == "artist" && current_user.address.nil?
 
     redirect_to path unless path.nil? || path == request.path
   end
