@@ -25,6 +25,13 @@
               </div>
             <% end %>
           </div>
+
+          <div class="comments">
+              <% @post.comments.each do |comment| %>
+                <%= render "comments/comment", comment: comment %>
+              <% end %>
+          </div>
+
           <p class="card-text"><small class="text-muted">posted <%= distance_of_time_in_words_to_now(@post.created_at) %> ago</small></p>
         </div>
       </div>

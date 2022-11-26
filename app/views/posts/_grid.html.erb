@@ -9,7 +9,7 @@
             <div class="modal-dialog modal-dialog-centered">
               <div class="modal-content">
                 <div class="modal-body">
-                  <%= render 'posts/post_modal', post: post %>
+                  <%= render partial: 'posts/post_modal', locals: { post: post, comment: comment }  %>
                 </div>
               </div>
             </div>
