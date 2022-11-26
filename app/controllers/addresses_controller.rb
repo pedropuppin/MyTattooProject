@@ -16,20 +16,24 @@ class AddressesController < ApplicationController
   end
 
   def edit
-    @address = current_user.address
+    @address = Address.find(params[:id])
     authorize @address
   end
 
   def update
-    @address = current_user.address
+    @address = Address.find(params[:id])
     @address.update(address_params)
     authorize @address
-    redirect_to edit_user_registration_path
+    if @address.save
+      redirect_to user_profile_path(current_user)
+    else
+      render :edit, status: :unprocessable_entity
+    end
   end
 
   private
 
   def address_params
-    params.require(:address).permit(:zipcode, :country, :city, :street, :number, :neighborhood, :state )
+    params.require(:address).permit(:zipcode, :country, :city, :street, :number, :neighborhood, :state)
   end
 end

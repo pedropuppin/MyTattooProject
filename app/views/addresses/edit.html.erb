@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row justify-content-center align-items-center min-vh-100">
     <div class="col-6 border rounded p-5 bg-white">
-      <%= simple_form_for @address, url: addresses_path do |f|%>
+      <%= simple_form_for @address do |f|%>
         <%= f.input :zipcode, input_html: { onblur: "pesquisacep(this.value)" } %>
         <%= f.input :street %>
         <%= f.input :number %>
