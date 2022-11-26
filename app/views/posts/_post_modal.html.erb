@@ -2,7 +2,25 @@
   <div class="card post">
     <div class="row g-0 h-100">
       <div class="col h-100">
-          <%= cl_image_tag post.photo.key, class: "img-fluid rounded-start h-100"%>
+        <%= cl_image_tag post.photo.key, class: "img-fluid rounded-start h-100"%>
+        <% if user_signed_in? %>
+          <% pre_like = post.likes.find { |like| like.user_id == current_user.id} %>
+          <% if pre_like %>
+            <% like = current_user.likes.find_by(post_id: post.id) %>
+            <br>
+            <%= link_to like_path(like), data: { turbo_method: :delete } do %>
+              <i class="fa-solid fa-heart-crack"></i>
+            <% end %>
+          <% else %>
+          <br>
+            <%= link_to post_likes_path(post), data: { turbo_method: :post } do %>
+              <i class="fa-solid fa-heart"></i>
+            <% end %>
+          <% end %>
+          <p><%= post.likes.count %> <%= (post.likes.count) == 1 ? 'Like' : 'Likes'%></p>
+        <% else %>
+          <p><%= post.likes.count %> <%= (post.likes.count) == 1 ? 'Like' : 'Likes'%></p>
+        <% end %>
       </div>
       <div class="col">
         <div class="card-body">
@@ -28,6 +46,8 @@
           </div>
           <p class="card-text">
             <%= post.content  %>
+
+
           </p>
           <p class="card-text"><small class="text-muted">posted <%= distance_of_time_in_words_to_now(post.created_at) %> ago</small></p>
         </div>

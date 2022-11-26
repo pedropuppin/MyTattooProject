@@ -15,6 +15,9 @@ Rails.application.routes.draw do
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   resources :posts do
     resource :comments, only: :create
+    resources :likes, only: %i[create]
   end
-  resource :comments, only: %i[edit update destroy]
+  resource :comments, only: %i[edit update destroy] 
+
+  resources :likes, only: %i[destroy]
 end
