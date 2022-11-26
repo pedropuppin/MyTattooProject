@@ -14,6 +14,7 @@ Rails.application.routes.draw do
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   resources :posts do
-    resources :likes, only: %i[create destroy]
+    resources :likes, only: %i[create]
   end
+  resources :likes, only: %i[destroy]
 end

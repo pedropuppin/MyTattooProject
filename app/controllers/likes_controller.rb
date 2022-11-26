@@ -1,19 +1,18 @@
 class LikesController < ApplicationController
-  before_action :find_post
+  before_action :find_post, only: [:create]
   before_action :find_like, only: [:destroy]
 
   def create
     @post.likes.create(user_id: current_user.id)
-
-    redirect_to post_path(@post)
+    redirect_to root_path
     authorize @post
   end
 
   def destroy
-    @like.destroy
-
-    redirect_to post_path(@post)
+    @like = Like.find(params[:id])
     authorize @like
+    @like.destroy
+    redirect_to root_path, status: :see_other
   end
 
   private
@@ -23,23 +22,6 @@ class LikesController < ApplicationController
   end
 
   def find_like
-    @like = @post.likes.find(params[:id])
+    @like = Like.find(params[:id])
   end
-  # def create
-  #   post = Post.find(params[:post_id])
-  #   like = Like.new
-  #   like.user = current_user
-  #   like.post = post
-  #   like.save!
-  #   redirect_to posts_path(anchor: "post-#{post.id}")
-  #   authorize @like
-  # end
-
-  # def destroy
-  #   post = Post.find(params[:id].to_i)
-  #   like = post.likes.where(user_id:current_user.id)
-  #   like.first.destroy
-  #   redirect_to posts_path(anchor: "post-#{post.id}")
-  #   authorize @like
-  # end
 end
