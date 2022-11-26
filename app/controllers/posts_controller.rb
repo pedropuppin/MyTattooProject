@@ -1,10 +1,6 @@
 class PostsController < ApplicationController
   before_action :set_post, only: %i[show edit update destroy]
-  skip_before_action :authenticate_user!, only: %i[index show]
-
-  def index
-    @posts = Post.group_em(policy_scope(Post).reverse, 4)
-  end
+  skip_before_action :authenticate_user!, only: :show
 
   def show
     authorize @post
