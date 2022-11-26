@@ -1,0 +1,15 @@
+current directory: /home/pedropuppin/code/pedropuppin/MyTattooProject/vendor/bundle/ruby/3.1.0/gems/debug_inspector-1.1.0/ext/debug_inspector
+/home/pedropuppin/.rbenv/versions/3.1.2/bin/ruby -I /home/pedropuppin/.rbenv/versions/3.1.2/lib/ruby/site_ruby/3.1.0 extconf.rb
+creating Makefile
+
+current directory: /home/pedropuppin/code/pedropuppin/MyTattooProject/vendor/bundle/ruby/3.1.0/gems/debug_inspector-1.1.0/ext/debug_inspector
+make DESTDIR\= sitearchdir\=./.gem.20221126-6302-liphrb sitelibdir\=./.gem.20221126-6302-liphrb clean
+
+current directory: /home/pedropuppin/code/pedropuppin/MyTattooProject/vendor/bundle/ruby/3.1.0/gems/debug_inspector-1.1.0/ext/debug_inspector
+make DESTDIR\= sitearchdir\=./.gem.20221126-6302-liphrb sitelibdir\=./.gem.20221126-6302-liphrb
+compiling debug_inspector.c
+linking shared-object debug_inspector.so
+
+current directory: /home/pedropuppin/code/pedropuppin/MyTattooProject/vendor/bundle/ruby/3.1.0/gems/debug_inspector-1.1.0/ext/debug_inspector
+make DESTDIR\= sitearchdir\=./.gem.20221126-6302-liphrb sitelibdir\=./.gem.20221126-6302-liphrb install
+/usr/bin/install -c -m 0755 debug_inspector.so ./.gem.20221126-6302-liphrb
