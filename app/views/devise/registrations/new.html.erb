@@ -38,8 +38,8 @@
                       placeholder: "***********",
                       input_html: { autocomplete: "new-password" } %>
 
-          <p class="mt-4">Are you a tattoo artist?</p>
-          <%= f.collection_radio_buttons :role, [['artist', 'Sim'], ['client', 'Não']], :first, :last, required: true %>
+          <p class="mt-4">Você é um tatuador?</p>
+          <%= f.collection_radio_buttons :role, [['artist', 'Sim'], ['client', 'Não']], :first, :last, item_wrapper_tag: :div, required: true %>
 
 
         <div class="form-actions">
