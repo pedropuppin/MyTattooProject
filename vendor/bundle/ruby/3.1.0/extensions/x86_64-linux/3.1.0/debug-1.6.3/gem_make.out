@@ -1,0 +1,16 @@
+current directory: /home/pedropuppin/code/pedropuppin/MyTattooProject/vendor/bundle/ruby/3.1.0/gems/debug-1.6.3/ext/debug
+/home/pedropuppin/.rbenv/versions/3.1.2/bin/ruby -I /home/pedropuppin/.rbenv/versions/3.1.2/lib/ruby/site_ruby/3.1.0 extconf.rb
+creating Makefile
+
+current directory: /home/pedropuppin/code/pedropuppin/MyTattooProject/vendor/bundle/ruby/3.1.0/gems/debug-1.6.3/ext/debug
+make DESTDIR\= sitearchdir\=./.gem.20221126-3187-e3i7ei sitelibdir\=./.gem.20221126-3187-e3i7ei clean
+
+current directory: /home/pedropuppin/code/pedropuppin/MyTattooProject/vendor/bundle/ruby/3.1.0/gems/debug-1.6.3/ext/debug
+make DESTDIR\= sitearchdir\=./.gem.20221126-3187-e3i7ei sitelibdir\=./.gem.20221126-3187-e3i7ei
+compiling debug.c
+compiling iseq_collector.c
+linking shared-object debug/debug.so
+
+current directory: /home/pedropuppin/code/pedropuppin/MyTattooProject/vendor/bundle/ruby/3.1.0/gems/debug-1.6.3/ext/debug
+make DESTDIR\= sitearchdir\=./.gem.20221126-3187-e3i7ei sitelibdir\=./.gem.20221126-3187-e3i7ei install
+/usr/bin/install -c -m 0755 debug.so ./.gem.20221126-3187-e3i7ei/debug
