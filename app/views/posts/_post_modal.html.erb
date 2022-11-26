@@ -44,11 +44,32 @@
               </div>
             <% end %>
           </div>
+
           <p class="card-text">
             <%= post.content  %>
 
 
           </p>
+
+          <div class="container">
+            <div class="comments">
+              <span class="mb-2 d-block"><small><em class="text-muted"><%= "nenhum comentário foi feito" if post.comments.empty? %></em></small></span>
+              <% post.comments.each do |comment| %>
+                <%= render "comments/comment", comment: comment %>
+              <% end %>
+            </div>
+
+            <%= simple_form_for [ post, comment ], html: { data: { action: "turbo:submit-end->quotation-subscription#resetForm" }, class: "d-flex"} do |f| %>
+              <%= f.input :content,
+                label: false,
+                placeholder: "Adicione um comentário",
+                wrapper_html: {class: "flex-grow-1"}
+              %>
+              <%= f.submit "Send", class: "btn btn-primary mb-3" %>
+            <% end %>
+          </div>
+
+
           <p class="card-text"><small class="text-muted">posted <%= distance_of_time_in_words_to_now(post.created_at) %> ago</small></p>
         </div>
       </div>
