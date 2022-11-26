@@ -4,7 +4,7 @@ class LikesController < ApplicationController
 
   def create
     @post.likes.create(user_id: current_user.id)
-    redirect_to root_path
+    redirect_to post_path(@post)
     authorize @post
   end
 

@@ -1,5 +1,9 @@
 <div id="comment-<%= comment.id %>">
-  <%= cl_image_tag comment.user.photo.key, transformation: [{gravity: "face", height: 400, width: 400, crop: "thumb"}], class: "avatar" %>
+  <% if comment.user.photo.attached? %>
+    <%= cl_image_tag comment.user.photo.key, transformation: [{gravity: "face", height: 400, width: 400, crop: "thumb"}], class: "avatar" %>
+  <% else %>
+    <%= image_tag "https://cdn-icons-png.flaticon.com/512/149/149071.png", class: "avatar" %>
+  <% end %>
   <small>
     <strong><%= comment.user.full_name %></strong>
     <i><%= distance_of_time_in_words_to_now(comment.created_at) %></i>

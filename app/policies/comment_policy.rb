@@ -11,7 +11,7 @@ class CommentPolicy < ApplicationPolicy
   end
 
   def new?
-    true
+    true 
   end
 
   def create?

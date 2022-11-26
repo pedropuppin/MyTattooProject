@@ -1,6 +1,7 @@
 <div class="container">
   <div class="card post">
     <div class="row g-0 h-100">
+
       <div class="col h-100">
         <%= cl_image_tag post.photo.key, class: "img-fluid rounded-start h-100"%>
         <% if user_signed_in? %>
@@ -17,11 +18,10 @@
               <i class="fa-solid fa-heart"></i>
             <% end %>
           <% end %>
-          <p><%= post.likes.count %> <%= (post.likes.count) == 1 ? 'Like' : 'Likes'%></p>
-        <% else %>
-          <p><%= post.likes.count %> <%= (post.likes.count) == 1 ? 'Like' : 'Likes'%></p>
         <% end %>
+        <p><%= post.likes.count %> <%= (post.likes.count) == 1 ? 'Like' : 'Likes'%></p>
       </div>
+
       <div class="col">
         <div class="card-body">
           <div class="user-photo d-flex align-self-center">
@@ -31,7 +31,6 @@
               <%= image_tag "https://cdn-icons-png.flaticon.com/512/149/149071.png", class: "post-avatar" %>
             <% end %>
             <h5 class="card-title"><%= link_to post.user.full_name, user_profile_path(post.user), class: "text-decoration-none" %></h5>
-
             <% if post.user == current_user %>
               <div class="dropdown">
                 <button type="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa-solid fa-ellipsis"></i></button>
@@ -44,12 +43,7 @@
               </div>
             <% end %>
           </div>
-
-          <p class="card-text">
-            <%= post.content  %>
-
-
-          </p>
+          <p class="card-text"><%= post.content %></p>
 
           <div class="container">
             <div class="comments">
@@ -59,13 +53,17 @@
               <% end %>
             </div>
 
-            <%= simple_form_for [ post, comment ], html: { data: { action: "turbo:submit-end->quotation-subscription#resetForm" }, class: "d-flex"} do |f| %>
-              <%= f.input :content,
-                label: false,
-                placeholder: "Adicione um comentário bem maneiro",
-                wrapper_html: {class: "flex-grow-1"}
-              %>
-              <%= f.submit "Send", class: "btn btn-primary mb-3" %>
+            <% if current_user %>
+              <%= simple_form_for [ post, comment ], html: { data: { action: "turbo:submit-end->quotation-subscription#resetForm" }, class: "d-flex"} do |f| %>
+                <%= f.input :content,
+                  label: false,
+                  placeholder: "Adicione um comentário bem maneiro",
+                  wrapper_html: {class: "flex-grow-1"}
+                %>
+                <%= f.submit "Send", class: "btn btn-primary mb-3" %>
+              <% end %>
+            <% else %>
+              <p>Para comentar <%= link_to "Clique aqui ", new_user_session_path %></p>
             <% end %>
           </div>
 
