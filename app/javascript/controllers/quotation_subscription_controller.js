@@ -13,9 +13,7 @@ export default class extends Controller {
     )
     setTimeout(() => {
       window.scrollTo({top: document.body.scrollHeight, behavior: "smooth"});
-      console.warn("warn");
     }, 10);
-    console.log("iaeee");
   }
 
   #insertMessageAndScrollDown(data) {

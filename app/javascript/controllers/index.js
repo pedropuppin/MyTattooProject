@@ -4,8 +4,14 @@
 
 import { application } from "./application"
 
+import AddressController from "./address_controller"
+application.register("address", AddressController)
+
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
+
+import InsertInListController from "./insert_in_list_controller"
+application.register("insert-in-list", InsertInListController)
 
 import QuotationSubscriptionController from "./quotation_subscription_controller"
 application.register("quotation-subscription", QuotationSubscriptionController)

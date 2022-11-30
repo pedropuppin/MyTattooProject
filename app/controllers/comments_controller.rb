@@ -12,13 +12,17 @@ class CommentsController < ApplicationController
     @comment = Comment.new(comment_params)
     @comment.user = current_user
     @comment.post = @post
-    if @comment.save
-      redirect_to post_path(@post)
-    else
-      render :new, status: :unprocessable_entity
-    end
     authorize @comment
     authorize @post
+    respond_to do |format|
+      if @comment.save
+        format.html { redirect_to post_path(@post) }
+        format.json # Follow the classic Rails flow and look for a create.json view
+      else
+        format.html { render :new, status: :unprocessable_entity }
+        format.json # Follow the classic Rails flow and look for a create.json view
+      end
+    end
   end
 
   def edit
@@ -27,13 +31,13 @@ class CommentsController < ApplicationController
 
   def update
     @post = Post.find(params[:post_id])
+    authorize @comment
+    authorize @post
     if @comment.update(comment_params)
       redirect_to post_path(@post)
     else
       render :new, status: :unprocessable_entity
     end
-    authorize @comment
-    authorize @post
   end
 
   def destroy
