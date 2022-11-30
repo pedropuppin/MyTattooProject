@@ -1,4 +1,26 @@
-<div class="container">
-  <h1>Pages#home</h1>
-  <%= render partial: 'posts/grid', locals: { comment: @comment, posts: @posts } %>
+<div class="grid-background">
+  <div class="grid">
+    <% @posts.order(created_at: :desc).each do |post| %>
+      <div class="post" data-bs-toggle="modal" data-bs-target="#modal<%= post.id %>">
+        <%= cl_image_tag(post.photo.key) %>
+        <div class="description">
+          <% if post.user.photo.attached? %>
+            <%= cl_image_tag post.user.photo.key, transformation: [{gravity: "face", height: 50, width: 50, crop: "thumb"}] %>
+          <% else %>
+            <%= image_tag "https://cdn-icons-png.flaticon.com/512/149/149071.png" %>
+          <% end %>
+          <p><%= post.user.full_name %></p>
+        </div>
+      </div>
+      <div class="modal fade modal-lg" id="modal<%= post.id %>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-body">
+              <%= render partial: 'posts/post_modal', locals: { post: post, comment: @comment }  %>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
 </div>
