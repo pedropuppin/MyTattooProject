@@ -1,4 +1,20 @@
-<div class="container">
-  <h1>Pages#home</h1>
-  <%= render partial: 'posts/grid', locals: { comment: @comment, posts: @posts } %>
+<div class="home-page">
+  <div class="banner">
+    <div class="container">
+      <span><i>my</i></span>
+      <h1>- TATTOO PROJECT -</h1>
+      <p>Achar seu novo tatuador nunca foi tão fácil</p>
+      <%= link_to "Explorar", posts_path, class: "btn btn-home" %>
+    </div>
+  </div>
+
+  <div class="production">
+    <div class="dev-banner">
+      <h1 id="dev-h1">- Desenvolvedores -</h1>
+      <span id="dev-span"><i>powered by LeWagon</i></span>
+      <div class="developers">
+        <%= render "dev_infos" %>
+      </div>
+    </div>
+  </div>
 </div>
