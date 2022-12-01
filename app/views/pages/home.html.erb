@@ -1,26 +1,20 @@
-<div class="grid-background">
-  <div class="grid">
-    <% @posts.order(created_at: :desc).each do |post| %>
-      <div class="post" data-bs-toggle="modal" data-bs-target="#modal<%= post.id %>">
-        <%= cl_image_tag(post.photo.key) %>
-        <div class="description">
-          <% if post.user.photo.attached? %>
-            <%= cl_image_tag post.user.photo.key, transformation: [{gravity: "face", height: 50, width: 50, crop: "thumb"}] %>
-          <% else %>
-            <%= image_tag "https://cdn-icons-png.flaticon.com/512/149/149071.png" %>
-          <% end %>
-          <p><%= post.user.full_name %></p>
-        </div>
-      </div>
-      <div class="modal fade modal-lg" id="modal<%= post.id %>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-          <div class="modal-content">
-            <div class="modal-body">
-              <%= render partial: 'posts/post_modal', locals: { post: post, comment: @comment }  %>
-            </div>
-          </div>
-        </div>
-      </div>
-    <% end %>
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://tristero.qodeinteractive.com/dark/wp-content/uploads/2020/02/port-1-featured-img.jpg);">
+  <div class="container">
+    <h5>my</h5>
+    <h1>- TATTOO PROJECT -</h1>
+    <p>Achar seu tatuador nunca foi tão fácil</p>
+    <%= link_to "Procure sua tattoo!", posts_path, class: "btn btn-home" %>
+  </div>
+</div>
+<div class="developers row">
+  <div class="dev-infos col">
+    <%= image_tag("pedro.png") %> <br>
+    <h3>Pedro Puppin</h3>
+    <%= link_to "mais informações", "https://github.com/pedropuppin", target: :_blank  %>
+  </div>
+  <div class="dev-infos col">
+    <%= image_tag("gabriel.png") %> <br>
+    <h3>Gabriel Gomes</h3>
+    <%= link_to "mais informações", "https://github.com/avlisemog", target: :_blank  %>
   </div>
 </div>

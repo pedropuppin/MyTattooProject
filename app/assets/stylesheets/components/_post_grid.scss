@@ -1,11 +1,11 @@
 .grid-background{
-  background-color: #121212;
+  background-color: #040404;
 }
 
 .grid{
   margin-top: 2em;
-  margin-left: 4em;
-  margin-right: 4em;
+  margin-left: 15em;
+  margin-right: 15em;
   column-count: 5;
   column-gap: 15px;
 }
@@ -14,6 +14,8 @@
   .grid{
     column-count: 1;
     column-gap: 15px;
+    margin-left: 5em;
+    margin-right: 5em;
   }
  }
 
@@ -21,13 +23,17 @@
   .grid{
     column-count: 2;
     column-gap: 15px;
+    margin-left: 7em;
+    margin-right: 7em;
   }
  }
- 
+
 @media (min-width:641px)  {
   .grid{
     column-count: 3;
     column-gap: 15px;
+    margin-left: 7em;
+    margin-right: 7em;
   }
 }
 
@@ -35,6 +41,8 @@
   .grid{
     column-count: 3;
     column-gap: 15px;
+    margin-left: 10em;
+    margin-right: 10em;
   }
  }
 

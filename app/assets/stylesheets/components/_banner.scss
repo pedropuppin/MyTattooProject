@@ -1,0 +1,68 @@
+.banner {
+  background-size: cover;
+  background-position: center;
+  padding: 250px 0;
+}
+
+.container {
+  text-align: center;
+}
+
+.banner h1 {
+  margin: 0;
+  color: white;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  font-size: 50px;
+  font-weight: bold;
+  letter-spacing: 15px;
+}
+
+.banner h5 {
+  color: white;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  font-size: 20px;
+  letter-spacing: 5px;
+  font-family: "Roboto Thin 100 italic";
+}
+
+.banner p {
+  font-size: 20px;
+  color: white;
+  opacity: .7;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+}
+
+.developers {
+  background-color: #111111;
+  background-size: cover;
+  padding: 150px 0;
+}
+
+.developers img {
+  height: 200px;
+  width: 200px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 30px;
+}
+
+.developers a {
+  text-decoration: none;
+  color: rgb(177, 177, 177);
+  font-family: "Roboto Bold 700";
+  text-transform: uppercase;
+}
+
+.developers a:hover {
+  color: white;
+}
+
+.developers h3 {
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.dev-infos {
+  text-align: center;
+}

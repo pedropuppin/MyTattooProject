@@ -2,6 +2,13 @@ class PostsController < ApplicationController
   before_action :set_post, only: %i[show edit update destroy]
   skip_before_action :authenticate_user!, only: :show
 
+  def index
+    @user = current_user
+    @posts = policy_scope(Post)
+    @comment = Comment.new
+    authorize @comment, policy_class: CommentPolicy
+  end
+
   def show
     authorize @post
   end
