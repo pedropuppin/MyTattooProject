@@ -3,60 +3,62 @@
   margin-bottom: 15px;
   overflow: hidden;
   position: relative;
+
+  img {
+    width: 100%;
+    transform: scale(1.3);
+    transition: all 0.3s ease-out;
+  }
+
+  .description {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    padding: 15px;
+    text-align: center;
+    background-image: linear-gradient(to bottom, rgba(255,0,0,0), rgb(0, 0, 0));
+    transform: translateY(30px);
+    transition: all 0.3s ease-out 0.1s;
+    opacity: 0;
+
+    img {
+      width: 30px;
+      border-radius: 50%;
+      margin-right: 10px;
+      transform: translateY(30px);
+      transition: all 0.3s ease-out 0.1s;
+      opacity: 0;
+    }
+
+    p {
+      color: white;
+      text-decoration: none;
+      display: inline-block;
+      transform: translateY(30px);
+      transition: all 0.3s ease-out 0.1s;
+      opacity: 0;
+    }
+  }
 }
 
-.post img {
-  width: 100%;
-  transform: scale(1.3);
-  transition: all 0.3s ease-out;
-}
+.post:hover {
+  img{
+    transform: scale(1.1) translateY(-5px);
+  }
 
-.post:hover img{
-  transform: scale(1.1) translateY(-5px);
-}
+  .description {
+    transform: translateY(0);
+    opacity: 1;
 
-.description {
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  padding: 15px;
-  text-align: center;
-  background-image: linear-gradient(to bottom, rgba(255,0,0,0), rgb(0, 0, 0));
-  transform: translateY(30px);
-  transition: all 0.3s ease-out 0.1s;
-  opacity: 0;
-}
+    img {
+    transform: translateY(0);
+    opacity: 1;
+    }
 
-.description img {
-  width: 30px;
-  border-radius: 50%;
-  margin-right: 10px;
-  transform: translateY(30px);
-  transition: all 0.3s ease-out 0.1s;
-  opacity: 0;
-}
-
-.description p {
-  color: white;
-  text-decoration: none;
-  display: inline-block;
-  transform: translateY(30px);
-  transition: all 0.3s ease-out 0.1s;
-  opacity: 0;
-}
-
-.post:hover .description img {
-  transform: translateY(0);
-  opacity: 1;
-}
-
-.post:hover .description p {
-  transform: translateY(0);
-  opacity: 1;
-}
-
-.post:hover .description {
-  transform: translateY(0);
-  opacity: 1;
+    p {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
 }

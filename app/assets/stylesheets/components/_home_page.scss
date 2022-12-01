@@ -23,6 +23,8 @@
     font-size: 20px;
     letter-spacing: 5px;
     font-family: "Roboto";
+    padding-top: 7px;
+    opacity: .7;
   }
 
   p {
@@ -108,16 +110,22 @@
     padding: 10px;
 
     h2 {
-      font-size: 22px;
-      margin-top: 10px;
+      font-size: 20px;
+      margin-top: 13px;
       text-align: center;
       text-transform: uppercase;
+
 
       span {
         color: #8f8f8f;
         font-size: 13px;
       }
     }
+  }
+
+  #fernandoH2 {
+    margin-top: 19px;
+    font-size: 15px;
   }
 
   .social-icons {
