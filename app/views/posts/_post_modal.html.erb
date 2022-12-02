@@ -26,7 +26,7 @@
           <% end %>
         </div>
         <p class="card-text"><%= post.content %></p>
-        
+
         <hr>
 
         <div class="like-button h-100">
@@ -47,6 +47,13 @@
           <% end %>
           <p><%= post.likes.count %> <%= (post.likes.count) == 1 ? 'Like' : 'Likes'%></p>
         </div>
+
+        <p>
+          Tags:
+          <% post.tags.each do |tag| %>
+            #<%= link_to tag.name, tag_path(tag), class: "text-decoration-none" %>
+          <% end %>
+        </p>
 
         <div class="comment-container" data-controller="insert-in-list">
           <div class="comments overflow-auto" data-insert-in-list-target="comments" style="height: 400px">
