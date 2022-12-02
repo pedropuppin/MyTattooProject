@@ -2,6 +2,7 @@
   <%= simple_form_for @post do |f| %>
     <%= f.input :content, as: :text, label: 'Comment', placeholder: 'Say something about your tattoo!' %>
     <%= f.input :photo, as: :file %>
+    <%= f.input :tag_list, as: :select, collection: Tag::TAG %>
     <%= f.submit class: 'btn btn-primary'%>
   <% end %>
 </div>
