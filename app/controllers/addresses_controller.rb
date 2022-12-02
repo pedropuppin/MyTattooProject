@@ -8,7 +8,7 @@ class AddressesController < ApplicationController
     @address = Address.new(address_params)
     @address.user = current_user
     if @address.save
-      redirect_to root_path
+      redirect_to posts_path
     else
       render :new, status: :unprocessable_entity
     end
