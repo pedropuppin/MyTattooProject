@@ -16,7 +16,6 @@
         </div>
         <% if post.user == current_user %>
           <div class="dropdown">
-
             <%= link_to nil, data: { bs_toggle: "dropdown", aria_expanded: "false"} do %>
               <i class="fa-solid fa-ellipsis"></i>
             <% end %>
@@ -31,7 +30,6 @@
       </div>
 
       <p class="card-text"><%= post.content %></p>
-
 
       <div class="like-button h-100">
         <% if user_signed_in? %>
@@ -51,6 +49,13 @@
         <% end %>
         <p><%= pluralize(post.likes.count, 'Like') %></p>
       </div>
+
+      <p>
+        Tags:
+        <% post.tags.each do |tag| %>
+          #<%= link_to tag.name, tag_path(tag), class: "text-decoration-none" %>
+        <% end %>
+      </p>
 
       <div class="comment-container" data-controller="insert-in-list">
         <div class="comments overflow-auto" data-insert-in-list-target="comments" style="height: 400px">

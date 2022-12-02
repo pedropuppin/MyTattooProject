@@ -19,4 +19,5 @@ Rails.application.routes.draw do
   end
   resources :comments, only: %i[edit update destroy]
   resources :likes, only: %i[destroy]
+  resources :tags
 end
