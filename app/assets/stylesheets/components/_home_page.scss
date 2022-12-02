@@ -1,8 +1,12 @@
 .banner {
   background-size: cover;
   background-position: center;
-  padding: 250px 0;
+  background-repeat: no-repeat;
+  height: 100vh;
   background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://tristero.qodeinteractive.com/dark/wp-content/uploads/2020/02/port-1-featured-img.jpg);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
   .container {
     text-align: center;
@@ -39,10 +43,13 @@
   background-image: url('backgroundnoise.png');
   background-color: #111111;
   align-items: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  text-align: center;
 
   .dev-banner {
-    text-align: center;
-
     #dev-h1 {
       color: #fff;
       text-transform: uppercase;
@@ -63,16 +70,15 @@
     }
 
     .developers {
-      display: flex;
-      justify-content: space-between;
-      margin-left: 200px;
-      margin-top: 200px;
+      column-count: 3;
+      column-gap: 15px;
     }
   }
 }
 
+
 .dev-infos {
-  transform: translate(-50%, -50%);
+  transform: translate(1%, 1%);
   width: 200px;
   height: 300px;
   overflow: hidden;
