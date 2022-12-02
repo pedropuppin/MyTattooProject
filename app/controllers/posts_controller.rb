@@ -25,7 +25,7 @@ class PostsController < ApplicationController
     authorize @post
 
     if @post.save
-      redirect_to post_path(@post)
+      redirect_to posts_path
     else
       render :new, status: :unprocessable_entity
     end

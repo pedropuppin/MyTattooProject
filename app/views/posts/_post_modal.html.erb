@@ -31,32 +31,6 @@
 
       <p class="card-text"><%= post.content %></p>
 
-      <div class="like-button h-100">
-        <% if user_signed_in? %>
-          <% pre_like = post.likes.find { |like| like.user_id == current_user.id} %>
-          <% if pre_like %>
-            <% like = current_user.likes.find_by(post_id: post.id) %>
-            <br>
-            <%= link_to like_path(like), data: { turbo_method: :delete } do %>
-              <i class="fa-solid fa-heart-crack"></i>
-            <% end %>
-          <% else %>
-          <br>
-            <%= link_to post_likes_path(post), data: { turbo_method: :post } do %>
-              <i class="fa-solid fa-heart"></i>
-            <% end %>
-          <% end %>
-        <% end %>
-        <p><%= pluralize(post.likes.count, 'Like') %></p>
-      </div>
-
-      <p>
-        Tags:
-        <% post.tags.each do |tag| %>
-          #<%= link_to tag.name, tag_path(tag), class: "text-decoration-none" %>
-        <% end %>
-      </p>
-
       <div class="comment-container" data-controller="insert-in-list">
         <div class="comments overflow-auto" data-insert-in-list-target="comments" style="height: 400px">
           <span class="mb-2 d-block"><small><em class="text-muted"><%= "nenhum comentário foi feito" if post.comments.empty? %></em></small></span>
@@ -64,12 +38,43 @@
             <%= render "comments/comment", comment: comment %>
           <% end %>
         </div>
+
+        <div class="user-actions">
+          <div class="like-button h-100">
+            <% if user_signed_in? %>
+              <% pre_like = post.likes.find { |like| like.user_id == current_user.id} %>
+              <% if pre_like %>
+                <% like = current_user.likes.find_by(post_id: post.id) %>
+                <br>
+                <%= link_to like_path(like), data: { turbo_method: :delete } do %>
+                  <i class="fa-solid fa-heart-crack"></i>
+                <% end %>
+              <% else %>
+              <br>
+                <%= link_to post_likes_path(post), data: { turbo_method: :post } do %>
+                  <i class="fa-solid fa-heart"></i>
+                <% end %>
+              <% end %>
+            <% end %>
+            <p><%= pluralize(post.likes.count, 'Like') %></p>
+          </div>
+          <p>
+            Tags:
+            <% post.tags.each do |tag| %>
+              #<%= link_to tag.name, tag_path(tag), class: "text-decoration-none" %>
+            <% end %>
+          </p>
+        </div>
+
+
         <% if current_user %>
           <%= render "comments/comment_form", comment: comment, post: post %>
         <% else %>
           <p>Para comentar <%= link_to "Clique aqui ", new_user_session_path %></p>
         <% end %>
       </div>
+
+
       <p class="card-text"><small class="text-muted"><%= distance_of_time_in_words_to_now(post.created_at) %></small></p>
     </div>
   </div>
