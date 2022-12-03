@@ -13,6 +13,7 @@ class PostsController < ApplicationController
       collection_posts = []
       collection_posts << Post.search_by_tag(params[:query])
       collection_posts << Post.search_by_content(params[:query])
+      User.search_by_user(params[:query]).each { |user| collection_posts << user.posts }
       User.search_by_address(params[:query]).each { |user| collection_posts << user.posts }
       @posts = []
       collection_posts.each do |collection_post|

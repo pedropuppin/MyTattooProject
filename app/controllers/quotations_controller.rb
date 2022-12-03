@@ -16,7 +16,7 @@ class QuotationsController < ApplicationController
     @artist = User.find(params[:artist_id])
     authorize @quotation
   end
-  
+
   def create
     @artist = User.find(params[:artist_id])
     @quotation = Quotation.new(quotations_params)
