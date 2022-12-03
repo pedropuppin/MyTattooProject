@@ -1,7 +1,8 @@
-<h1>Posts Tagged with <%= @tag.name %></h1>
+<h1>Posts tagged with <%= @tag.name.capitalize %></h1>
 
 <ul>
   <% @tag.posts.each do |post| %>
-    <li><%= link_to post.content, post_path(post) %></li>
+    <%= link_to cl_image_tag post.photo.key, class: "w-100 h-100"%>
+      <li><%#= link_to post.photo, post_path(post) %></li>
   <% end %>
 </ul>

@@ -28,6 +28,8 @@ class PostsController < ApplicationController
 
   def show
     authorize @post
+    @comment = Comment.new
+    authorize @comment, policy_class: CommentPolicy
   end
 
   def new
@@ -42,7 +44,7 @@ class PostsController < ApplicationController
     authorize @post
 
     if @post.save
-      redirect_to post_path(@post)
+      redirect_to posts_path
     else
       render :new, status: :unprocessable_entity
     end
@@ -64,7 +66,7 @@ class PostsController < ApplicationController
   def destroy
     authorize @post
     @post.destroy
-    redirect_to root_path
+    redirect_to posts_path
   end
 
   private
