@@ -12,6 +12,10 @@
 @import "components/post";
 @import "pages/index";
 
+html {
+  background-color: #121212;
+}
+
 body{
   min-height: 100vh;
   display: flex;

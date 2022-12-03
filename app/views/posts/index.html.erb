@@ -1,6 +1,6 @@
 <div class="grid-background">
   <div class="grid">
-    <% @posts.sort { |post| post.created_at }.each do |post| %>
+    <% @posts.order(created_at: :desc).each do |post| %>
       <div class="post" data-bs-toggle="modal" data-bs-target="#modal<%= post.id %>">
         <%= cl_image_tag(post.photo.key) %>
         <div class="description">
