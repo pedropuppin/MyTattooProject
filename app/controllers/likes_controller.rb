@@ -9,7 +9,6 @@ class LikesController < ApplicationController
   end
 
   def destroy
-    @like = Like.find(params[:id])
     authorize @like
     @like.destroy
   end
