@@ -1,20 +1,7 @@
-.navbar-lewagon {
-  justify-content: space-between;
-  background: #111111;
+.navbar-scrolled {
+  background-color: #141414;
+}
 
-  .navbar-collapse {
-    flex-grow: 0;
-  }
-
-  .navbar-brand img {
-    width: 40px;
-  }
-
-  .nav-item li{
-    color: white;
-
-    a {
-      color: #fff;
-    }
-  }
+.navbar {
+  transition: all 0.5s;
 }
