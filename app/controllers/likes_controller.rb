@@ -9,10 +9,8 @@ class LikesController < ApplicationController
   end
 
   def destroy
-    @like = Like.find(params[:id])
     authorize @like
     @like.destroy
-    redirect_to posts_path, status: :see_other
   end
 
   private

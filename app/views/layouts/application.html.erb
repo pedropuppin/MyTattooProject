@@ -18,14 +18,3 @@
     <%= yield %>
   </body>
 </html>
-
-<script>
-  const navEl = document.querrySelector('.navbar')
-  window.addEventListener('scroll', () => {
-    if (window.scrollY >= 12) {
-      navEl.classList.add('.navbar-scrolled')
-    } else if (window.scrollY < 56) {
-      navEl.classList.remove('.navbar-scrolled')
-    }
-  })
-</script>
