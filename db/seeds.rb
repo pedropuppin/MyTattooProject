@@ -64,10 +64,18 @@ User.all.each do |user|
         post:,
         user:
       )
-      puts "user #{user} liked post #{post}"
-      puts "details:"
-      p like
-      puts ""
+      puts "user #{like.user} liked post #{like.post}"
+    end
+  end
+
+  Post.all.each do |post|
+    if random_boolean()
+      comment = Comment.create!(
+        content: Faker::Lorem.paragraph,
+        post:,
+        user:
+      )
+      puts "user #{comment.user} commented \"#{comment.content}\"on post #{comment.post}"
     end
   end
 end
