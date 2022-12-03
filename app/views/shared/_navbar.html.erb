@@ -4,6 +4,13 @@
       <i class="fa-solid fa-palette"></i> <%# mudar para logo do app depois %>
     <% end %>
 
+  <div class="search-bar">
+      <%= form_with url: posts_path, method: :get, class: "input-group" do %>
+        <%= text_field_tag :query, params[:query], class: "form-control", placeholder: "Encontre um tatuador" %>
+        <%= submit_tag "Explorar", class: "btn btn-outline-secondary" %>
+      <% end %>
+  </div>
+
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>

@@ -10,9 +10,12 @@ class User < ApplicationRecord
   has_many :quotations, dependent: :destroy
   has_many :messages
   has_many :likes, dependent: :destroy
+  has_many :posts
 
   validates :first_name, :last_name, :role, :email, presence: true
   validates :email, uniqueness: true
+
+  include PgSearch::Model
 
   def self.find_for_facebook_oauth(auth)
     user_params = auth.slice("provider", "uid")
@@ -38,4 +41,13 @@ class User < ApplicationRecord
   def full_name
     [first_name, last_name].join(' ').titleize
   end
+
+  pg_search_scope :search_by_address,
+                  associated_against: {
+                    address: :city
+                  },
+                  using: {
+                    tsearch: { prefix: true }
+                  },
+                  ignoring: :accents
 end

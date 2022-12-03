@@ -198,6 +198,9 @@ GEM
       uri
     orm_adapter (0.5.0)
     pg (1.4.5)
+    pg_search (2.3.6)
+      activerecord (>= 5.2)
+      activesupport (>= 5.2)
     public_suffix (5.0.0)
     puma (5.6.5)
       nio4r (~> 2.0)
@@ -289,12 +292,6 @@ GEM
       actionpack (>= 6.0.0)
       activejob (>= 6.0.0)
       railties (>= 6.0.0)
-    turbolinks-source (5.2.0)
-    turbolinks_render (0.9.21)
-      actionpack (>= 5.2.0)
-      activesupport (>= 5.2.0)
-      railties (>= 5.2.0)
-      turbolinks-source (~> 5.1)
     tzinfo (2.0.5)
       concurrent-ruby (~> 1.0)
     unf (0.1.4)
@@ -345,6 +342,7 @@ DEPENDENCIES
   omniauth-rails_csrf_protection
   open-uri
   pg (~> 1.1)
+  pg_search
   puma (~> 5.0)
   pundit
   rails (~> 7.0.4)
@@ -355,7 +353,6 @@ DEPENDENCIES
   sprockets-rails
   stimulus-rails
   turbo-rails
-  turbolinks_render
   tzinfo-data
   web-console
   webdrivers
