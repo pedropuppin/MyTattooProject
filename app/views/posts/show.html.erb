@@ -1,11 +1,12 @@
 <div class="container">
   <div class="card-post">
-    <div class="row g-0 h-100">
-      <div class="col h-100">
-          <%= cl_image_tag @post.photo.key, class: "img-fluid rounded-start h-100"%>
+    <div class="d-flex">
+      <div>
+        <%= cl_image_tag @post.photo.key, class: "img-fluid"%>
       </div>
-      <div class="col">
-        <div class="card-body">
+      <div class="card-body p-3">
+        <%# CARD HEADER - FIXED TOP %>
+        <div class="">
           <div class="user-photo d-flex align-self-center">
             <% if @post.user.photo.attached? %>
               <%= cl_image_tag @post.user.photo.key, transformation: [{gravity: "face", height: 50, width: 50, crop: "thumb"}], class: "post-avatar" %>
@@ -25,14 +26,52 @@
               </div>
             <% end %>
           </div>
-
+          <p class="mt-2">
+            Tags:
+            <% @post.tags.each do |tag| %>
+              #<%= link_to tag.name, tag_path(tag), class: "text-decoration-none" %>
+            <% end %>
+          </p>
+          <p class="card-text"><%= @post.content %></p>
+          <%# <LIKES> %>
+          <div class="user-actions">
+            <div class="d-flex justify-content-between">
+              <div class="d-flex">
+                <% if user_signed_in? %>
+                  <% pre_like = @post.likes.find { |like| like.user_id == current_user.id} %>
+                  <% if pre_like %>
+                    <% like = current_user.likes.find_by(post_id: @post.id) %>
+                    <%= link_to like_path(like), data: { turbo_method: :delete } do %>
+                      <i class="fa-solid fa-heart-crack"></i>
+                    <% end %>
+                  <% else %>
+                    <%= link_to post_likes_path(@post), data: { turbo_method: :post } do %>
+                      <i class="fa-solid fa-heart"></i>
+                    <% end %>
+                  <% end %>
+                <% end %>
+                <p class="ms-2"><%= pluralize(@post.likes.count, 'Like') %></p>
+              </div>
+              <p class="card-text"><small class="text-muted">posted <%= distance_of_time_in_words_to_now(@post.created_at) %> ago</small></p>
+            </div>
+          </div>
+          <%# </LIKES> %>
+        </div>
+        <%# CARD BODY - SCROLLABLE %>
+        <div class="overflow-auto">
           <div class="comments">
               <% @post.comments.each do |comment| %>
                 <%= render "comments/comment", comment: comment %>
               <% end %>
           </div>
-
-          <p class="card-text"><small class="text-muted">posted <%= distance_of_time_in_words_to_now(@post.created_at) %> ago</small></p>
+        </div>
+        <%# CARD FOOTER - FIXED BOTTOM %>
+        <div class="card-body-footer">
+          <% if current_user %>
+            <%= render "comments/comment_form", comment: @comment, post: @post %>
+          <% else %>
+            <p>Para comentar <%= link_to "Clique aqui ", new_user_session_path %></p>
+          <% end %>
         </div>
       </div>
     </div>

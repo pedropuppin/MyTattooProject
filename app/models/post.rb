@@ -6,6 +6,8 @@ class Post < ApplicationRecord
   has_many :taggings
   has_many :tags, through: :taggings
 
+  include PgSearch::Model
+
   def tag_list
     self.tags.collect do |tag|
       tag.name
@@ -17,4 +19,20 @@ class Post < ApplicationRecord
     new_or_found_tags = tag_names.collect { |name| Tag.find_or_create_by(name: name) }
     self.tags = new_or_found_tags
   end
+
+  pg_search_scope :search_by_content,
+                  against: [:content],
+                  using: {
+                    tsearch: { prefix: true }
+                  },
+                  ignoring: :accents
+
+  pg_search_scope :search_by_tag,
+                  associated_against: {
+                    tags: :name
+                  },
+                  using: {
+                    tsearch: { prefix: true }
+                  },
+                  ignoring: :accents
 end

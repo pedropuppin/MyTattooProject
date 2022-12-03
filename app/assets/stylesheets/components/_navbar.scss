@@ -1,6 +1,5 @@
 .navbar-lewagon {
   justify-content: space-between;
-  background: #111111;
 
   .navbar-collapse {
     flex-grow: 0;
@@ -9,13 +8,35 @@
   .navbar-brand img {
     width: 40px;
   }
+}
 
-  .nav-item li{
-    color: white;
+.navbar {
+  transition: all 0.5s;
+}
 
-    a {
-      color: #fff;
+.navbar-scrolled {
+  background-color: #000000;
+}
+
+.hide-block {
+  display: none;
+}
+
+@media (max-width: 990px) {
+  /* For a screen < 720px, this CSS will be read */
+  .navbar-nav {
+    background-color: #141414;
+
+    .nav-item {
+      padding: 10px;
     }
   }
 
+  .profile-img {
+    display: none;
+  }
+
+  .navbrand-hide {
+    display: none;
+  }
 }
