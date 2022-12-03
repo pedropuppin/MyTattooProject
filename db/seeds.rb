@@ -57,7 +57,6 @@ end
 end
 
 User.all.each do |user|
-  # Retrieves a random number according to the total amount of posts
   Post.all.each do |post|
     if random_boolean()
       like = Like.create!(
