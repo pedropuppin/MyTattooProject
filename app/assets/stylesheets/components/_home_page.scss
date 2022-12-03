@@ -1,8 +1,12 @@
 .banner {
   background-size: cover;
   background-position: center;
-  padding: 250px 0;
+  background-repeat: no-repeat;
+  height: 100vh;
   background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://tristero.qodeinteractive.com/dark/wp-content/uploads/2020/02/port-1-featured-img.jpg);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
   .container {
     text-align: center;
@@ -38,10 +42,14 @@
 .production {
   background-image: url('backgroundnoise.png');
   background-color: #111111;
-  align-items: center;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
 
   .dev-banner {
-    text-align: center;
+    padding: 0 0 70px 0;
 
     #dev-h1 {
       color: #fff;
@@ -63,21 +71,24 @@
     }
 
     .developers {
-      display: flex;
-      justify-content: space-between;
-      margin-left: 200px;
-      margin-top: 200px;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      justify-items: center;
+      margin-top: 32px;
+      gap: 20px;
     }
   }
 }
 
 .dev-infos {
-  transform: translate(-50%, -50%);
+  transform: translate(1%, 1%);
   width: 200px;
   height: 300px;
   overflow: hidden;
   border-radius: 15px;
   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+  display: flex;
+  justify-content: center;
 
   .img-box {
     position: absolute;
@@ -193,5 +204,48 @@
 
   li:nth-child(3) a {
     transition-delay: 0.3s;
+  }
+}
+
+@media (max-width: 960px) {
+  /* For a screen < 960px, this CSS will be read */
+  .production .dev-banner {
+    .developers {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    #dev-h1 {
+      font-size: 30px;
+    }
+  }
+}
+
+@media (max-width: 720px) {
+  /* For a screen < 720px, this CSS will be read */
+  .production .dev-banner {
+    .developers {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    #dev-h1 {
+      font-size: 20px;
+    }
+  }
+}
+
+@media (max-width: 540px) {
+  /* For a screen < 540px, this CSS will be read */
+  .production .dev-banner {
+    .developers {
+      grid-template-columns: 1fr;
+    }
+
+    #dev-h1 {
+      font-size: 15px;
+    }
+
+    #dev-span {
+      font-size: 12px;
+    }
   }
 }

@@ -12,7 +12,7 @@ class LikesController < ApplicationController
     @like = Like.find(params[:id])
     authorize @like
     @like.destroy
-    redirect_to root_path, status: :see_other
+    redirect_to posts_path, status: :see_other
   end
 
   private
