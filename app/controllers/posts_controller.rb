@@ -1,12 +1,29 @@
 class PostsController < ApplicationController
   before_action :set_post, only: %i[show edit update destroy]
   skip_before_action :authenticate_user!, only: %i[index show]
+  after_action :verify_policy_scoped, only: :index
 
   def index
     @user = current_user
-    @posts = policy_scope(Post)
     @comment = Comment.new
     authorize @comment, policy_class: CommentPolicy
+
+    if params[:query].present?
+      skip_policy_scope
+      collection_posts = []
+      collection_posts << Post.search_by_tag(params[:query])
+      collection_posts << Post.search_by_content(params[:query])
+      User.search_by_address(params[:query]).each { |user| collection_posts << user.posts }
+      @posts = []
+      collection_posts.each do |collection_post|
+        collection_post.each do |post|
+          @posts << post
+        end
+      end
+      @posts
+    else
+      @posts = policy_scope(Post).order(created_at: :desc)
+    end
   end
 
   def show
