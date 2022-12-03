@@ -1,3 +1,16 @@
+$chosen-color: #fff;
+
 .card-post {
-  border: 2px solid blue;
+  height: 80vh;
+  background-color: $chosen-color;
+}
+
+.bg-fill {
+  background-color: $chosen-color;
+}
+
+.card-img {
+  height: 100%;
+  width: 50%;
+  object-fit: cover;
 }
