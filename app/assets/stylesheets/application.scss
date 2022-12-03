@@ -13,13 +13,12 @@
 @import "components/card_post";
 @import "pages/index";
 
-html {
-  background-color: #121212;
-}
+
 
 body{
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   color: #323636;
+  background-image: url('backgroundnoise.png');
 }
