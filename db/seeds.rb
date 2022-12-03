@@ -55,3 +55,19 @@ end
 
   puts ""
 end
+
+User.all.each do |user|
+  # Retrieves a random number according to the total amount of posts
+  Post.all.each do |post|
+    if random_boolean()
+      like = Like.create!(
+        post:,
+        user:
+      )
+      puts "user #{user} liked post #{post}"
+      puts "details:"
+      p like
+      puts ""
+    end
+  end
+end
