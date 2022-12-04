@@ -50,4 +50,9 @@ class User < ApplicationRecord
                     tsearch: { prefix: true }
                   },
                   ignoring: :accents
+
+  pg_search_scope :search_by_user,
+                  against: %i[first_name last_name],
+                  using: { tsearch: { prefix: true } },
+                  ignoring: :accents
 end
