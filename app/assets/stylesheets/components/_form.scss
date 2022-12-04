@@ -7,8 +7,9 @@
   text-decoration: none;
 }
 
-.form-label {
-  visibility: hidden;
+.form-background {
+  background-image: url('backgroundnoise.png');
+
 }
 
 .background {
@@ -16,4 +17,20 @@
   background-position: center;
   background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('tattoobg.jpg');
   background-repeat: no-repeat;
+
+}
+
+.logo {
+  background-size: cover;
+  background-position: center;
+  background-image: url('logo.png');
+  margin-bottom: 24px;
+  width: 250px;
+  height: 250px;
+  margin: auto;
+  display: block;
+}
+
+::-webkit-scrollbar {
+  display: none;
 }
