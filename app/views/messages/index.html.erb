@@ -1,12 +1,13 @@
 <div class="container messages-container">
-  <%= link_to 'Back', :back %>
-  <h1>Suas conversas</h1>
   <span class="mb-2 d-block"><small><em class="text-muted"><%= "Você não marcou nenhum projeto ainda!" if @quotations.empty? %></em></small></span>
-  <div class="chat-grid">
-    <div class="people-list">
-      <ul class="list">
+  <div class="messages-grid">
+    <div class="left-side">
+      <div class="header">
+        <h2>Suas conversas</h2>
+      </div>
+      <ul class="chat-list">
         <% @quotations.reverse.each do |quotation| %>
-          <li class="clearfix">
+          <li class="user-box">
             <%= link_to messages_index_path(quotation_id: quotation.id) do %>
               <div id="quotation-<%= quotation.id %>">
                 <% if current_user.role == 'client' %>
@@ -28,7 +29,7 @@
         <% end %>
       </ul>
     </div>
-    <div class="chat-messages h-100">
+    <div class="right-side h-100">
       <% if params[:quotation_id].present? %>
         <%= render template: "messages/messages", locals: { quotation: @quotations.find(params[:quotation_id]), message: Message.new } %>
       <% else %>
