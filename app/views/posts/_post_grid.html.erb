@@ -1,5 +1,5 @@
 <div class="grid">
-  <% @posts.sort { |post| post.created_at }.reverse.each do |post| %>
+  <% posts.sort { |post| post.created_at }.reverse.each do |post| %>
     <div class="post">
       <%= link_to post_path(post) do %>
         <%= cl_image_tag(post.photo.key) %>
