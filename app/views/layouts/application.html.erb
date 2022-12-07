@@ -15,6 +15,7 @@
   <body>
     <% if ["posts"].include?(params[:controller]) && ["index"].include?(params[:action]) %>
       <%= render "shared/navbar_index" %>
+    <% elsif ["posts"].include?(params[:controller]) && ["show"].include?(params[:action]) %>
     <% else %>
       <%= render "shared/navbar" %>
     <% end %>
@@ -22,7 +23,7 @@
     <p class="notice" style="display: none;"><%= notice %></p>
     <p class="alert"><%= alert %></p>
     <%= yield %>
-    <% unless ["messages"].include?(params[:controller]) || ["new", "edit"].include?(params[:action]) %>
+    <% unless ["messages", "posts"].include?(params[:controller]) || ["new", "edit"].include?(params[:action]) %>
       <%= render "shared/footer" %>
     <% end %>
     <script>

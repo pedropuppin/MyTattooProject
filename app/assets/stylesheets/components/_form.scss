@@ -1,15 +1,52 @@
 .font-login {
   color: white;
+
+  a{
+    color: white;
+    text-decoration: none;
+  }
 }
 
-.font-login a{
-  color: white;
-  text-decoration: none;
+.form-container {
+  margin: auto;
+  width: 470px;
+}
+
+.form-actions {
+  .form-btn {
+    background-color: #00a396;
+    border-radius: 20px;
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  .form-btn:hover {
+    background-color: #00C9B7;
+    transition: all 0.3s;
+  }
+}
+
+.form-cancel-btn {
+  background-color: #424649;
+  border-radius: 20px;
+  width: 100%;
+}
+
+.form-cancel-btn:hover {
+  background-color: #b32222;
+  transition: all 0.3s;
+}
+
+.form-control {
+  border-radius: 20px
+}
+
+.form-select {
+  border-radius: 20px
 }
 
 .form-background {
   background-image: url('backgroundnoise.png');
-
 }
 
 .background {
@@ -17,7 +54,6 @@
   background-position: center;
   background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('tattoobg.jpg');
   background-repeat: no-repeat;
-
 }
 
 .logo {

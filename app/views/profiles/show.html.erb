@@ -3,11 +3,11 @@
       <i class="fa-solid fa-arrow-left"></i>
     <% end %>
   <div class="d-flex justify-content-around">
-    <div class="d-flex align-items-center">
+    <div class="profile-pic d-flex align-items-center">
       <% if @user.photo.attached? %>
         <%= cl_image_tag @user.photo.key, transformation: [{gravity: "face", height: 400, width: 400, crop: "thumb"}], class: "profile-pic" %>
       <% else %>
-        <%= image_tag "https://cdn-icons-png.flaticon.com/512/149/149071.png", class: "profile-pic" %>
+        <%= image_tag "https://cdn-icons-png.flaticon.com/512/149/149071.png"%>
       <% end %>
       <div class="ms-4">
         <h1><%= @user.full_name %></h1>

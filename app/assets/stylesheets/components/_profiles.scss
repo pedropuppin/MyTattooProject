@@ -15,6 +15,9 @@ a {
 }
 
 .profile-pic {
-  height: 200px;
-  border-radius: 10px;
+  width: 200px;
+
+  img {
+    border-radius: 10px;
+  }
 }
