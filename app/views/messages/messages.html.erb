@@ -1,11 +1,12 @@
+<% @quotation = quotation if quotation.present? %>
 <div class="container" data-controller="quotation-subscription" data-quotation-subscription-quotation-id-value="<%= @quotation.id %>">
   <div class="messages" data-quotation-subscription-target="messages">
-      <% @quotation.messages.each do |message| %>
-        <%= render "messages/message", message: message %>
-      <% end %>
+    <% @quotation.messages.each do |message| %>
+      <%= render "messages/message", message: message %>
+    <% end %>
   </div>
 
-  <%= simple_form_for [@quotation, @message], html: { data: { action: "turbo:submit-end->quotation-subscription#resetForm" }, class: "d-flex"} do |f| %>
+  <%= simple_form_for [@quotation, message], html: { data: { action: "turbo:submit-end->quotation-subscription#resetForm" }, class: "d-flex"} do |f| %>
     <%= f.input :content,
       label: false,
       placeholder: "Fale alguma coisa!",
