@@ -1,5 +1,7 @@
 <div class="container post-container d-flex">
-  <%= link_to "back", :back %>
+  <%= link_to :back, class: 'me-3' do %>
+    <i class="fa-solid fa-arrow-left"></i>
+  <% end %>
   <div class="img-box d-flex justify-content-end">
     <%= cl_image_tag @post.photo.key %>
   </div>
