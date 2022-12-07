@@ -12,7 +12,6 @@ Rails.application.routes.draw do
   get 'profiles/:user_id', to: 'profiles#show', as: :user_profile
   root to: "pages#home"
 
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   resources :posts do
     resources :comments, except: :index
     resources :likes, only: :create

@@ -10,12 +10,12 @@
             <%= link_to messages_index_path(quotation_id: quotation.id) do %>
               <div id="quotation-<%= quotation.id %>">
                 <% if current_user.role == 'client' %>
-                  <%= render partial: "shared/user_photo", locals: { photo: quotation.user.photo } %>
+                  <%= render partial: "shared/user_photo", locals: { photo: quotation.artist.photo } %>
                   <div class="about">
                     <strong><%= quotation.artist.first_name %></strong>
                   </div>
                 <% else %>
-                  <%= render partial: "shared/user_photo", locals: { photo: quotation.artist.photo } %>
+                  <%= render partial: "shared/user_photo", locals: { photo: quotation.user.photo } %>
                   <div class="about">
                     <strong><%= quotation.user.first_name %></strong>
                   </div>
