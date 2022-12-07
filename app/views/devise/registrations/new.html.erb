@@ -1,35 +1,36 @@
 <div class="row min-vh-100">
-  <div class="col-9 background">
+  <div class="col-5 background">
   </div>
-  <div class="col-3 form-background font-login mt-5">
-    <div class="container">
-      <h2>Cadastre-se</h2>
-      <p>Bem-vindo! Vamos criar seu perfil</p>
-      <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), data: { turbo: :false }) do |f| %>
-        <%= f.error_notification %>
-        <div class="form-inputs">
-          <%= f.input :first_name,
-                      required: true,
-                      autofocus: true,
-                      label: 'Nome',
-                      placeholder: "José" %>
-          <%= f.input :last_name,
-                      required: true,
-                      autofocus: true,
-                      label: 'Sobrenome',
-                      placeholder: "Silva" %>
+  <div class="col-7 center-from">
+    <div class="form-container" id="bigger-form-container">
+      <div class="form-infos">
+        <h2>Cadastre-se</h2>
+        <p>Bem-vindo! Vamos criar seu perfil</p>
+        <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), data: { turbo: :false }) do |f| %>
+          <%= f.error_notification %>
+          <div class="form-grid">
+            <%= f.input :first_name,
+                        required: true,
+                        autofocus: true,
+                        label: 'Nome',
+                        placeholder: "José" %>
+            <%= f.input :last_name,
+                        required: true,
+                        autofocus: true,
+                        label: 'Sobrenome',
+                        placeholder: "Silva" %>
+            <%= f.input :phone,
+                        autofocus: true,
+                        label: 'Telefone',
+                        placeholder: "(XX) XXXXX-XXXX" %>
 
-          <%= f.input :phone,
-                      autofocus: true,
-                      label: 'Telefone',
-                      placeholder: "(XX) XXXXX-XXXX" %>
-
-          <%= f.input :email,
-                      required: true,
-                      autofocus: true,
-                      placeholder: "joao@silva.com",
-                      label: 'Email',
-                      input_html: { label: "Enter your email" } %>
+            <%= f.input :email,
+                        required: true,
+                        autofocus: true,
+                        placeholder: "joao@silva.com",
+                        label: 'Email',
+                        input_html: { label: "Enter your email" } %>
+          </div>
 
           <%= f.input :photo, as: :file, label: 'Foto de perfil' %>
 
@@ -47,14 +48,15 @@
                       input_html: { autocomplete: "new-password" } %>
 
           <p class="mt-4">Você é um tatuador?</p>
-          <%= f.collection_radio_buttons :role, [['artist', 'Sim'], ['client', 'Não']], :first, :last, item_wrapper_tag: :div, required: true %>
-
-
-        <div class="form-actions">
-          <%= f.button :submit, "Confirmar", data: { turbo: false }, class: "btn btn-dark mt-3" %>
-        </div>
-
-      <% end %>
+          <div class="radio-btn-grid mb-4">
+            <%= f.collection_radio_buttons :role, [['artist', 'Sim'], ['client', 'Não']], :first, :last, item_wrapper_tag: :div, required: true %>
+          </div>
+          <div class="form-actions" id="create-post-form">
+            <%= f.button :submit, "Confirmar", data: { turbo: false }, class: "form-btn" %>
+            <%= link_to 'Cancelar', :back, class: "btn btn-flat" %>
+          </div>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>

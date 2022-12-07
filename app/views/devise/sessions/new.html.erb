@@ -1,32 +1,36 @@
-<div class="container">
-  <div class="row justify-content-center align-items-center min-vh-100">
-    <div class="col-6 border rounded p-5 bg-white form-background font-login">
-        <div class="logo"></div>
-        <h2 style="font-weight: bold">Log in</h2>
-        <p>Bem vindo de volta! Faça login na sua conta.</p>
-        <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name), data: { turbo: :false }) do |f| %>
-          <div class="form-inputs p-10">
-            <%= f.input :email,
-                        required: false,
-                        autofocus: true,
-                        label: 'Email',
-                        input_html: { autocomplete: "email" } %>
-            <%= f.input :password,
-                        required: false,
-                        label: 'Senha',
-                        input_html: { autocomplete: "current-password" } %>
-            <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
-          </div>
-
-          <div class="form-actions">
-            <b><%= f.button :submit, "Log in", class: "btn btn-light w-100 mb-5" %></b>
-
-          </div>
-        <% end %>
-
-        <%= render "devise/shared/links" %>
-        <%= link_to 'Cancel', :back %>
+<div class="container center-from">
+  <div class="form-container">
+    <div class="form-infos">
+      <div class="logo">
+        <%= image_tag('logo.png') %>
       </div>
+      <div class="form-txt">
+        <h2>Log in</h2>
+        <p>Bem vindo de volta! Faça login na sua conta.</p>
+      </div>
+
+      <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name), data: { turbo: :false }) do |f| %>
+        <div class="form-inputs p-10">
+          <%= f.input :email,
+                      required: false,
+                      autofocus: true,
+                      placeholder: 'Digite seu e-mail',
+                      label: 'Email',
+                      input_html: { autocomplete: "email" } %>
+          <%= f.input :password,
+                      required: false,
+                      placeholder: '********',
+                      label: 'Senha',
+                      input_html: { autocomplete: "current-password" } %>
+          <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+        </div>
+
+        <div class="form-actions" id="login-form">
+          <b><%= f.button :submit, "Log in", class: "form-btn" %></b>
+        </div>
+      <% end %>
+      <%= render "devise/shared/links" %>
+      <%= link_to 'Cancel', root_path %>
     </div>
   </div>
 </div>
