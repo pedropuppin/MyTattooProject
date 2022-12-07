@@ -1,4 +1,4 @@
-<% @quotations.each do | quotation | %>
+<% @quotations.order(created_at: :desc).each do | quotation | %>
   <% artist = User.find(quotation.artist_id) %>
   <% user = User.find(quotation.user_id) %>
   <div class="card-product m-4 col-12 col-sm-6 col-md-4">

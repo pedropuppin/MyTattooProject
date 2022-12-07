@@ -1,11 +1,11 @@
 <div class="container">
   <h1>Descreva sua ideia de tattoo!</h1>
   <%= simple_form_for @quotation, url: artist_quotations_path(@artist) do |f| %>
-    <%= f.input :placement, collection: Quotation::PLACEMENT %>
-    <%= f.input :size, collection: Quotation::SIZES %>
-    <%= f.input :description, placeholder: "Breve descrição da sua ideia" %>
-    <%= f.input :photos, as: :file, input_html: { multiple: true}  %>
-    <%= f.input :date %>
+    <%= f.input :placement, label: 'Local da tatuagem', collection: Quotation::PLACEMENT %>
+    <%= f.input :size, label: 'Tamanho da tatuagem', collection: Quotation::SIZES %>
+    <%= f.input :description, label: 'Descrição', placeholder: "Breve descrição da sua ideia" %>
+    <%= f.input :photos, label: 'Foto', as: :file, input_html: { multiple: true}  %>
+    <%= f.input :date, label: 'Data' %>
 
     <%= f.button :submit, "Pedir orçamento", class: "btn btn-flat" %>
   <% end %>

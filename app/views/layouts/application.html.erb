@@ -8,10 +8,12 @@
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   </head>
 
   <body>
-    <% if ["index"].include?(params[:action]) %>
+    <% if ["posts"].include?(params[:controller]) && ["index"].include?(params[:action]) %>
       <%= render "shared/navbar_index" %>
     <% else %>
       <%= render "shared/navbar" %>
@@ -20,5 +22,11 @@
     <p class="notice" style="display: none;"><%= notice %></p>
     <p class="alert"><%= alert %></p>
     <%= yield %>
+    <% unless ["messages"].include?(params[:controller]) || ["new", "edit"].include?(params[:action]) %>
+      <%= render "shared/footer" %>
+    <% end %>
+    <script>
+      AOS.init();
+    </script>
   </body>
 </html>

@@ -1,10 +1,9 @@
-
-<div class="navbar navbar-expand-lg navbar-dark sticky-top navbar-lewagon">
+<div class="navbar navbar-expand-lg navbar-dark navbar-lewagon">
   <div class="container-fluid">
 
-  <% unless ["index"].include?(params[:action]) %>
-    <%= link_to "MyTattooProject", root_path, class: "navbar-brand" %>
-  <% end %>
+    <%= link_to root_path, class: "navbar-brand" do %>
+      <%= image_tag('TTPlogo.png') %>
+    <% end %>
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -42,13 +41,6 @@
               </li>
             </ul>
           </li>
-          <li class="profile-img">
-            <% if current_user.photo.attached? %>
-              <%= cl_image_tag current_user.photo.key, transformation: [{gravity: "face", height: 400, width: 400, crop: "thumb"}], class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-            <% else %>
-              <%= image_tag "https://cdn-icons-png.flaticon.com/512/149/149071.png", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-            <% end %>
-          </li>
         <% else %>
           <li class="nav-item">
             <%= link_to "Home", root_path, class: "nav-link" %>
@@ -57,7 +49,7 @@
             <%= link_to "Explorar", posts_path, class: "nav-link" %>
           </li>
           <li class="nav-item">
-            <%= link_to "Sobre nós", new_user_session_path, class: "nav-link" %>
+            <%= link_to "Sobre", "#desenvolvedores", class: "nav-link" %>
           </li>
           <li class="nav-item">
             <%= link_to "Login", new_user_session_path, class: "nav-link" %>

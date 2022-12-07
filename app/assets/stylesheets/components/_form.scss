@@ -34,3 +34,14 @@
 ::-webkit-scrollbar {
   display: none;
 }
+
+.background-post {
+  background-size: cover;
+  background-position: center;
+  background-image: url('https://tristero.qodeinteractive.com/dark/wp-content/uploads/2020/03/contact-title-img.jpg');
+  background-repeat: no-repeat;
+}
+
+abbr[title="required"] {
+  display: none;
+}
