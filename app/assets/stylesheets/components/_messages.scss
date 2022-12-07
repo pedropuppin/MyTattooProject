@@ -5,14 +5,15 @@
 .chat-grid {
   display: grid;
   grid-template-columns: minmax(300px, 100px) 1fr;
-  gap: 20px;
+  gap: 10px;
   height: 700px;
 
   .people-list {
     overflow-y: scroll;
     height: 100%;
-    background-image: linear-gradient(to right, #4a545c, #4f5b63, #54626a, #596a71, #5e7178, #657b81, #6c858a, #738f93, #7f9fa0, #8baeac, #9abeb7, #a9cec2);
-    border-radius: 20px;
+    background-color: #314051;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
   }
 
   ul {
@@ -37,12 +38,14 @@
 .chat-messages {
   position: relative;
   overflow-y: scroll;
-  background-image: linear-gradient(to left top, #355268, #3c5a6d, #446271, #4d6975, #57717a, #607b82, #69858b, #738f93, #7f9fa0, #8baeac, #9abeb7, #a9cec2);
-  border-radius: 20px;
+  background-color: #314051;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
 
   form {
     position: fixed;
-    bottom: 73px;
+    bottom: 74px;
+
   }
 
   .messages {
