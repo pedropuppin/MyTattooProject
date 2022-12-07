@@ -12,13 +12,3 @@
 @import "components/post";
 @import "components/card_post";
 @import "pages/index";
-
-
-
-body{
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  color: #323636;
-  background-image: url('backgroundnoise.png');
-}

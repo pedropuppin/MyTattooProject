@@ -15,6 +15,3 @@ application.register("insert-in-list", InsertInListController)
 
 import QuotationSubscriptionController from "./quotation_subscription_controller"
 application.register("quotation-subscription", QuotationSubscriptionController)
-
-import ShowChatController from "./show_chat_controller"
-application.register("show-chat", ShowChatController)
