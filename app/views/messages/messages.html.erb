@@ -6,12 +6,12 @@
         <div class="user-img">
           <%= render partial: "shared/user_photo", locals: { photo: quotation.artist.photo } %>
         </div>
-        <h4>Conversa com <%= @quotation.artist.first_name.capitalize %> iniciada</h4>
+        <h4>Sua conversa com <%= @quotation.artist.first_name.capitalize %></h4>
       <% else %>
           <div class="user-img">
             <%= render partial: "shared/user_photo", locals: { photo: quotation.user.photo } %>
           </div>
-          <h4>Conversa com <%= @quotation.user.first_name.capitalize %> iniciada</h4>
+          <h4>Sua conversa com <%= @quotation.user.first_name.capitalize %></h4>
           </div>
       <% end %>
       <%= link_to user_profile_path(@quotation.user) do %>
