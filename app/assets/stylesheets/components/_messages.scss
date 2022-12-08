@@ -10,18 +10,21 @@
     height: 700px;
 
     .left-side {
-      overflow-y: scroll;
       height: 100%;
       background-color: rgb(190, 190, 190);
 
       .chat-list {
         list-style: none;
+        position: relative;
+        overflow-y: auto;
+        height: calc(100% - 1000px);
+
+        img {
+          float: left;
+          width: 50px;
+        }
       }
 
-      img {
-        float: left;
-        width: 50px;
-      }
 
       .header {
         position: relative;
@@ -31,6 +34,21 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.5);
+
+        .icon {
+          margin: 23px;
+          font-size: 30px;
+        }
+
+        .text {
+          margin: 30px;
+
+          h2 {
+            font-size: 25px;
+            font-family: 'Roboto', sans-serif;
+          }
+        }
       }
     }
   }

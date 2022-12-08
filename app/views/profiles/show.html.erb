@@ -3,28 +3,38 @@
       <i class="fa-solid fa-arrow-left"></i>
     <% end %>
   <div class="d-flex justify-content-around">
-    <div class="profile-pic d-flex align-items-center">
-      <% if @user.photo.attached? %>
-        <%= cl_image_tag @user.photo.key, transformation: [{gravity: "face", height: 400, width: 400, crop: "thumb"}], class: "profile-pic" %>
-      <% else %>
-        <%= image_tag "https://cdn-icons-png.flaticon.com/512/149/149071.png"%>
-      <% end %>
-      <div class="ms-4">
+    <div class="profile-user-infos">
+      <div class="profile-pic">
+        <% if @user.photo.attached? %>
+          <%= cl_image_tag @user.photo.key, transformation: [{gravity: "face", height: 400, width: 400, crop: "thumb"}], class: "profile-pic" %>
+        <% else %>
+          <%= image_tag "https://cdn-icons-png.flaticon.com/512/149/149071.png"%>
+        <% end %>
+      </div>
+      <div class="user-txt ms-4">
         <h1><%= @user.full_name %></h1>
         <p><%= @user.address.city if @user.role == "artist" %></p>
+      </div>
+      <div class="edit-profile-btn ms-4">
+        <% if @user == current_user %>
+          <%= link_to edit_user_registration_path do %>
+            <i class="fa-solid fa-gear"></i>
+          <% end %>
+        <% end %>
       </div>
     </div>
   </div>
   <hr class="mt-5 mb-4">
   <% unless @user == current_user %>
     <div class="d-flex justify-content-around">
-      <%= link_to "Pedir orçamento", new_artist_quotation_path(@user), class: 'btn btn-ghost' %>
+      <%= link_to "Pedir orçamento", new_artist_quotation_path(@user) %>
     </div>
   <% end %>
   <% if user_signed_in? %>
     <div class="d-flex justify-content-center">
       <%= link_to "Criar postagem", new_post_path,  class: 'mx-3 btn btn-ghost' if current_user.role == "artist" && @user == current_user %> <br>
-      <%= link_to "Editar perfil", edit_user_registration_path,  class: 'mx-3 btn btn-ghost' if @user == current_user%> <br>
+      <%= link_to "Mensagens", messages_index_path, class:"mx-3 btn btn-ghost" %> <br>
+      <%= link_to "Meus projetos", artist_quotations_path(current_user), class:"mx-3 btn btn-ghost" %>
     </div>
   <% end %>
 </div>
