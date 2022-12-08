@@ -12,36 +12,56 @@
           <h2>Conversas</h2>
         </div>
       </div>
-      <ul class="chat-list">
+      <div class="chat-list">
         <% @quotations.reverse.each do |quotation| %>
-          <li class="user-box">
-            <%= link_to messages_index_path(quotation_id: quotation.id) do %>
-              <div id="quotation-<%= quotation.id %>">
-                <% if current_user.role == 'client' %>
+          <%= link_to messages_index_path(quotation_id: quotation.id), calss: "block" do %>
+            <div class="block">
+              <% if current_user.role == 'client' %>
+                <div class="img-bx">
                   <%= render partial: "shared/user_photo", locals: { photo: quotation.artist.photo } %>
-                  <div class="about">
-                    <strong><%= quotation.artist.first_name %></strong>
+                </div>
+                <div class="details">
+                  <div class="quotation-head">
+                    <h4><%= quotation.artist.full_name %></h4>
+                    <p class="time"><%= distance_of_time_in_words_to_now(quotation.created_at) %></p>
                   </div>
-                <% else %>
+                  <div class="message-content">
+                    <p><%= quotation.messages.last&.content&.truncate(10) %></p>
+                  </div>
+                </div>
+              <% else %>
+                <div class="img-bx">
                   <%= render partial: "shared/user_photo", locals: { photo: quotation.user.photo } %>
-                  <div class="about">
-                    <strong><%= quotation.user.first_name %></strong>
+                </div>
+                <div class="details">
+                  <div class="quotation-head">
+                    <h4><%= quotation.user.full_name %></h4>
+                    <p class="time"><%= distance_of_time_in_words_to_now(quotation.created_at) %></p>
                   </div>
-                <% end %>
-                <i><%= quotation.created_at.strftime("%a %b %e at %l:%M %p") %></i>
-                <p><%= quotation.messages.last&.content&.truncate(10) %></p>
-              </div>
-            <% end %>
-          </li>
+                  <div class="message-content">
+                    <p><%= quotation.messages.last&.content&.truncate(10) %></p>
+                  </div>
+                </div>
+              <% end %>
+            </div>
+          <% end %>
         <% end %>
-      </ul>
+      </div>
     </div>
+
     <div class="right-side h-100">
       <% if params[:quotation_id].present? %>
         <%= render template: "messages/messages", locals: { quotation: @quotations.find(params[:quotation_id]), message: Message.new } %>
       <% else %>
-        <span class="mb-2 d-block"><small><em class="text-muted"><%= "Selecione uma conversa!" %></em></small></span>
+        <span><small><em class="select-message"><%= "Selecione uma conversa!" %></em></small></span>
       <% end %>
     </div>
   </div>
 </div>
+
+<script>
+  document.addEventListener('click', () => {
+    document.querySelector('.block').classList.remove('active')
+    document.querySelector('.block').classList.add('active')
+  })
+</script>

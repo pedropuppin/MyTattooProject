@@ -4,6 +4,10 @@
   border-radius: 15px;
   overflow: hidden;
 
+  a{
+    text-decoration: none;
+  }
+
   .messages-grid {
     display: grid;
     grid-template-columns: minmax(360px, 100px) 1fr;
@@ -11,26 +15,80 @@
 
     .left-side {
       height: 100%;
-      background-color: rgb(190, 190, 190);
+      background-color: #111B21;
 
       .chat-list {
-        list-style: none;
         position: relative;
         overflow-y: auto;
-        height: calc(100% - 1000px);
+        height: calc(100% - 1024px);
 
-        img {
-          float: left;
-          width: 50px;
+        .block:hover {
+          background: #202C33;
+          transition: all 0.2s;
         }
-      }
 
+        .block.active {
+          background: #111B21;
+        }
+
+        .block {
+          position: relative;
+          width: 100%;
+          display: flex;
+          border-bottom: 1px solid rgba(187, 187, 187, 0.06);
+          padding: 15px;
+          cursor: pointer;
+
+          img {
+            position: relative;
+            width: 50px;
+            height: 50px;
+            margin-right: 12px;
+          }
+
+          .details {
+            position: relative;
+            width: 100%;
+
+            .quotation-head {
+              display: flex;
+              justify-content: space-between;
+
+              h4 {
+                font-family: "Roboto", sans-serif;
+                font-size: 17px;
+                font-weight: 600;
+                color: #E3E7E9;
+                margin-bottom: 0;
+              }
+
+              .time {
+                font-size: 15px;
+                color: #aaa;
+                margin: 0;
+              }
+            }
+
+            .message-content {
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+
+              p {
+                color: #aaa;
+                font-size: 15px;
+              }
+            }
+          }
+        }
+
+      }
 
       .header {
         position: relative;
         width: 100%;
         height: 80px;
-        background-color: aqua;
+        background-color: #202C33;
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -45,34 +103,174 @@
           margin: 30px;
 
           h2 {
+            color: #E3E7E9;
             font-size: 25px;
+            font-weight: 600;
             font-family: 'Roboto', sans-serif;
           }
         }
       }
     }
-  }
-  .right-side {
-    position: relative;
-    overflow-y: scroll;
-    background-color: #fff;
-    border-right: 2px solid rgba(0, 0, 0, 0.5) ;
 
-    form {
-      position: fixed;
-      bottom: 74px;
-    }
+    .right-side {
+      position: relative;
+      overflow-y: scroll;
+      background-color: #0B141A;
+      border-left: 1px solid rgba(0, 0, 0, 0.3) ;
 
-    .messages {
-      .my-message {
-        width: 100%;
+      .select-message {
         display: flex;
-        justify-content: flex-end;
+        justify-content: center;
+        margin-top: 335px;
+        color: #fff;
+        font-size: 20px;
+        opacity: 0.6;
+      }
 
-        .my-message-content {
-          width: 200px;
+      .header {
+        position: relative;
+        width: 100%;
+        height: 80px;
+        background-color: #202C33;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+        padding: 0 14px;
+
+        .img-text {
+          position: relative;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+
+          h4 {
+            font-family: "Roboto", sans-serif;
+            font-weight: 400;
+            margin-left: 14px;
+            margin-bottom: 0;
+            color: #E3E7E9;
+          }
+        }
+
+        i {
+          font-size: 25px;
+          color: #aaa;
+          margin-right: 25px;
         }
       }
+
+      .messages {
+        position: relative;
+        width: 100%;
+        padding: 20px 30px;
+        height: 550px;
+
+        .my-message {
+          background: #005C4B;
+          border-radius: 10px;
+          width: 65%;
+          justify-content: flex-end;
+        }
+
+        .user-message {
+          background: #202C33;
+          border-radius: 10px;
+          width: 65%;
+          justify-content: flex-start;
+        }
+
+        .message-content {
+          position: relative;
+          width: 100%;
+          margin: 5px 0;
+
+          .user-img {
+            display: flex;
+            align-items: center;
+            padding: 5px;
+
+            h4 {
+              color: #E3E7E9;
+              font-family: "Roboto", sans-serif;
+              font-size: 17px;
+              font-weight: 600;
+              margin: 0 5px;
+            }
+          }
+
+          img {
+            height: 25px;
+            width: 25px;
+            border-radius: 50%;
+            margin-right: 5px;
+          }
+
+          p {
+            position: relative;
+            right: 0;
+            max-width: 65%;
+            padding: 12px;
+            font-size: 15px;
+
+            span {
+              display: block;
+              margin-top: 5px;
+              font-size: 10px;
+
+            }
+          }
+        }
+      }
+
+      .chat-box{
+        position: relative;
+        width: 100%;
+        height: 80px;
+        background: #202C33;
+
+        .chat-form-input {
+          width: 100%;
+          display: flex;
+          margin: 15px 10px;
+
+          .form-control {
+            border-top-right-radius: 0;
+            border-bottom-right-radius: 0;
+            background: #2c3b44;
+            border: 1px solid #2c3b44;
+          }
+
+          .chat-form-submit {
+            background: #2c3b44;
+            border-top-right-radius: 20px;
+            border-bottom-right-radius: 20px;
+            height: 38px;
+            width: 65px;
+            color: #aaa;
+          }
+
+          .chat-form-submit:hover {
+            background: #384a55;
+            transition: all 0.2s;
+          }
+        }
+      }
+    }
+
+    .right-side::before {
+      content: '';
+      position: absolute;
+      background-image: url('logoBG.png');
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      opacity: 0.04;
+      height: 920px;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
     }
   }
 }
