@@ -9,6 +9,10 @@ class MessagePolicy < ApplicationPolicy
     end
   end
 
+  def index?
+    true
+  end
+
   def messages?
     record.user == user || record.artist == user
   end

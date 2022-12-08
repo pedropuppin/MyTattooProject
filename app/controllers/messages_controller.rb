@@ -2,7 +2,8 @@ class MessagesController < ApplicationController
   def index
     # lista de conversas
     # listar todas as quotations (@quotations)
-    @quotations = policy_scope(Quotation)
+    @quotations = Quotation.all
+    skip_policy_scope
   end
 
   def messages

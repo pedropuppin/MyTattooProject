@@ -1,5 +1,4 @@
 <div class="container messages-container">
-  <span class="d-block"><small><em class="text-muted"><%= "Você não marcou nenhum projeto ainda!" if @quotations.empty? %></em></small></span>
   <div class="messages-grid">
     <div class="left-side">
       <div class="header">
@@ -13,6 +12,7 @@
         </div>
       </div>
       <div class="chat-list">
+        <%# <div id="quotation-<%= quotation.id %>
         <% @quotations.reverse.each do |quotation| %>
           <%= link_to messages_index_path(quotation_id: quotation.id), calss: "block" do %>
             <div class="block">
@@ -53,15 +53,15 @@
       <% if params[:quotation_id].present? %>
         <%= render template: "messages/messages", locals: { quotation: @quotations.find(params[:quotation_id]), message: Message.new } %>
       <% else %>
-        <span><small><em class="select-message"><%= "Selecione uma conversa!" %></em></small></span>
+        <span class="select-message"><small><em><%= @quotations.empty? ? "Você não marcou nenhum projeto ainda!" : "Selecione uma conversa!" %></em></small></span>
       <% end %>
     </div>
   </div>
 </div>
 
-<script>
+<%# <script>
   document.addEventListener('click', () => {
     document.querySelector('.block').classList.remove('active')
     document.querySelector('.block').classList.add('active')
   })
-</script>
+</script> %>

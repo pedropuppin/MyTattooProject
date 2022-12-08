@@ -1,4 +1,4 @@
-<div class="container">
+<div class="form-container" id="bigger-form-container">
   <h1>Descreva sua ideia de tattoo!</h1>
   <%= simple_form_for @quotation, url: artist_quotations_path(@artist) do |f| %>
     <%= f.input :placement, label: 'Local da tatuagem', collection: Quotation::PLACEMENT %>
@@ -7,6 +7,9 @@
     <%= f.input :photos, label: 'Foto', as: :file, input_html: { multiple: true}  %>
     <%= f.input :date, label: 'Data' %>
 
-    <%= f.button :submit, "Pedir orçamento", class: "btn btn-flat" %>
+    <div class="form-actions" id="create-post-form">
+      <%= f.button :submit, "Pedir orçamento", class: "form-btn" %>
+      <%= link_to 'Cancelar', :back, class: "btn btn-flat" %>
+    </div>
   <% end %>
 </div>

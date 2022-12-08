@@ -1,78 +1,34 @@
 .quotations-index {
   min-height: 100vh;
+  margin-top: 150px;
+}
 
-  .quotations-cards {
-    margin-top: 100px;
+.quotations-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 20px;
+
+  .quotation-cards {
+    .card-content {
+      .card-img{
+        width: 140px;
+        border-radius: 50%;
+        padding: 3px;
+        background: #202C33;
+
+        img {
+          height: 100%;
+          width: 100%;
+          border-radius: 50%;
+          border: 1px solid #fff;
+        }
+      }
+    }
   }
 }
 
-.card-product {
-  color: black;
-  border-radius: 5px;
-  width: 350px;
-  background: rgba(255, 255, 255, .5);
-  align-items: center;
-  border: 1px solid #ffffff40;
-  box-shadow: 0 18px 100px -60px black;
-  position: relative;
-}
 
-.card-product img {
-  width: 120px;
-  border-radius: 50%;
-  margin-bottom: 1rem;
-  margin-left: auto;
-  margin-right: auto;
-  display: block;
-  padding-top: 2rem;
-}
-
-.card-product h2 {
-  font-size: 18px;
-  font-weight: bold;
-  margin: 0;
-  text-align: center;
-}
-
-.card-product p {
-  font-size: 14px;
-  line-height: 1.4;
-  opacity: .7;
-  margin-bottom: 1rem;
-  margin-top: 8px;
-  text-align: center;
-}
-
-
-.card-product .card-product-infos {
-  padding: 16px;
-}
-
-.card-links{
-  align-items: center;
-  margin-bottom: 1rem;
-}
-
-.card-product a{
-  background: black;
-  color: white;
-  text-decoration: none;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  padding: 1rem;
-  border-radius: 100px;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  transition: background .5s;
-}
-
-.card-product a:hover{
-  background-color: rgba(0, 0, 0, .75);
-  cursor: pointer;
-}
-
-.card-product .delete{
+.card-contetn .delete{
   color: black;
   background: none;
   transition: background .5s;
@@ -81,7 +37,7 @@
   right: 5px;
 }
 
-.card-product .delete:hover{
+.card-contetn .delete:hover{
   background: none;
   color: rgba(255, 0, 0, 0.75);
 }
