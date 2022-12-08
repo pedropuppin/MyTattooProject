@@ -25,18 +25,19 @@
     </div>
   </div>
   <hr class="mt-5 mb-4">
-  <% unless @user == current_user %>
-    <div class="d-flex justify-content-around">
-      <%= link_to "Pedir orçamento", new_artist_quotation_path(@user) %>
-    </div>
-  <% end %>
-  <% if user_signed_in? %>
-    <div class="d-flex justify-content-center">
-      <%= link_to "Criar postagem", new_post_path,  class: 'mx-3 btn btn-ghost' if current_user.role == "artist" && @user == current_user %> <br>
-      <%= link_to "Mensagens", messages_index_path, class:"mx-3 btn btn-ghost" %> <br>
-      <%= link_to "Meus projetos", artist_quotations_path(current_user), class:"mx-3 btn btn-ghost" %>
-    </div>
-  <% end %>
+
+  <div class="d-flex justify-content-center">
+    <% unless @user == current_user %>
+      <div class="d-flex justify-content-around">
+        <%= link_to "Pedir orçamento", new_artist_quotation_path(@user), class: 'mx-3 btn btn-ghost' %>
+      </div>
+    <% end %>
+    <% if user_signed_in? %>
+        <%= link_to "Criar postagem", new_post_path, class: 'mx-3 btn btn-ghost' if current_user.role == "artist" && @user == current_user %> <br>
+        <%= link_to "Mensagens", messages_index_path, class:"mx-3 btn btn-ghost" %> <br>
+        <%= link_to "Meus projetos", artist_quotations_path(current_user), class:"mx-3 btn btn-ghost" %>
+    <% end %>
+  </div>
 </div>
 
 <div class="justify-content-center">
