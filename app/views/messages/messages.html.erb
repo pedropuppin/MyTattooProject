@@ -8,11 +8,10 @@
         </div>
         <h4>Sua conversa com <%= @quotation.artist.first_name.capitalize %></h4>
       <% else %>
-          <div class="user-img">
-            <%= render partial: "shared/user_photo", locals: { photo: quotation.user.photo } %>
-          </div>
-          <h4>Sua conversa com <%= @quotation.user.first_name.capitalize %></h4>
-          </div>
+        <div class="user-img">
+          <%= render partial: "shared/user_photo", locals: { photo: quotation.user.photo } %>
+        </div>
+        <h4>Sua conversa com <%= @quotation.user.first_name.capitalize %></h4>
       <% end %>
       <%= link_to user_profile_path(@quotation.user) do %>
         <i class="fa-regular fa-user"></i>

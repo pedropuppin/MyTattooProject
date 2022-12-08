@@ -6,7 +6,7 @@ class Quotation < ApplicationRecord
 
   after_create :auto_message
 
-  SIZES = ['Small', 'Medium', 'Large']
+  SIZES = ['Pequena (3cm ~ 10cm)', 'Média (10cm ~ 15cm)', 'Grande (15 cm ou mais)']
   PLACEMENT = %w[
     Tornozelo Costas(fechamento) Costas(superior) Canela Costas(inferior) Panturrilha Peito Cotovelo
     Antebraço(interno) Antebraço(externo) Superior-Braço(interno) Superior-Braço(externo) Deltóide Braço(fechamento) Pé

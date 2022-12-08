@@ -170,14 +170,16 @@
           background: #005C4B;
           border-radius: 10px;
           width: 65%;
-          justify-content: flex-end;
+          margin: 5px 0;
+          float: right;
         }
 
         .user-message {
           background: #202C33;
           border-radius: 10px;
           width: 65%;
-          justify-content: flex-start;
+          margin: 5px 0;
+          float: left;
         }
 
         .message-content {
@@ -209,9 +211,10 @@
           p {
             position: relative;
             right: 0;
-            max-width: 65%;
+            max-width: 90%;
             padding: 12px;
             font-size: 15px;
+            word-wrap: break-word;
 
             span {
               display: block;

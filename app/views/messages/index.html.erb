@@ -12,6 +12,7 @@
         </div>
       </div>
       <div class="chat-list">
+        <%# <div id="quotation-<%= quotation.id %>
         <% @quotations.reverse.each do |quotation| %>
           <%= link_to messages_index_path(quotation_id: quotation.id), calss: "block" do %>
             <div class="block">
@@ -58,9 +59,9 @@
   </div>
 </div>
 
-<script>
+<%# <script>
   document.addEventListener('click', () => {
     document.querySelector('.block').classList.remove('active')
     document.querySelector('.block').classList.add('active')
   })
-</script>
+</script> %>

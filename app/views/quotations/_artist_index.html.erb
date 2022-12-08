@@ -1,22 +1,25 @@
-<% @quotations.order(created_at: :desc).each do | quotation | %>
-  <% artist = User.find(quotation.artist_id) %>
-  <% user = User.find(quotation.user_id) %>
+<div class="quotation-cards">
+  <% @quotations.order(created_at: :desc).each do | quotation | %>
+    <% artist = User.find(quotation.artist_id) %>
+    <% user = User.find(quotation.user_id) %>
 
-  <div class="card-product m-4 col-12 col-sm-6 col-md-4">
-    <% if user.photo.attached? %>
-      <%= cl_image_tag user.photo.key, transformation: [{gravity: "face", height: 400, width: 400, crop: "thumb"}] %>
-    <% else %>
-      <%= image_tag "https://cdn-icons-png.flaticon.com/512/149/149071.png" %>
-    <% end %>
+    <div class="card-content">
+      <div class="card-img">
+        <% if user.photo.attached? %>
+          <%= cl_image_tag user.photo.key, transformation: [{gravity: "face", height: 400, width: 400, crop: "thumb"}] %>
+        <% else %>
+          <%= image_tag "https://cdn-icons-png.flaticon.com/512/149/149071.png" %>
+        <% end %>
+      </div>
 
-    <div class="card-product-infos">
-      <h2>Nome do cliente: <%= user.first_name.capitalize %></h2>
-      <p><strong>Ideia da tattoo:</strong> <%= quotation.description %></p>
-      <p><strong>Data:</strong> <%= quotation.date %></p>
-      <div class="card-links">
-        <%= link_to "informações", quotation_path(quotation) %>
+      <div class="card-product-infos">
+        <h2>Nome do cliente: <%= user.first_name.capitalize %></h2>
+        <p><strong>Ideia da tattoo:</strong> <%= quotation.description %></p>
+        <p><strong>Data:</strong> <%= quotation.date %></p>
+        <div class="card-links">
+          <%= link_to "informações", quotation_path(quotation) %>
+        </div>
       </div>
     </div>
-  </div>
-
-<% end %>
+  <% end %>
+</div>
