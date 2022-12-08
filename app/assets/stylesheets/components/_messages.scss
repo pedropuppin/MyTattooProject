@@ -1,61 +1,77 @@
 .messages-container{
+  padding: 0;
   margin: auto;
-}
+  border-radius: 15px;
+  overflow: hidden;
 
-.chat-grid {
-  display: grid;
-  grid-template-columns: minmax(300px, 100px) 1fr;
-  gap: 10px;
-  height: 700px;
+  .messages-grid {
+    display: grid;
+    grid-template-columns: minmax(360px, 100px) 1fr;
+    height: 700px;
 
-  .people-list {
-    overflow-y: scroll;
-    height: 100%;
-    background-color: #314051;
-    border-top-left-radius: 20px;
-    border-bottom-left-radius: 20px;
-  }
+    .left-side {
+      height: 100%;
+      background-color: rgb(190, 190, 190);
 
-  ul {
-    padding: 20px;
-    height: 770px;
+      .chat-list {
+        list-style: none;
+        position: relative;
+        overflow-y: auto;
+        height: calc(100% - 1000px);
 
-    li {
-      padding-bottom: 20px;
+        img {
+          float: left;
+          width: 50px;
+        }
+      }
+
+
+      .header {
+        position: relative;
+        width: 100%;
+        height: 80px;
+        background-color: aqua;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.5);
+
+        .icon {
+          margin: 23px;
+          font-size: 30px;
+        }
+
+        .text {
+          margin: 30px;
+
+          h2 {
+            font-size: 25px;
+            font-family: 'Roboto', sans-serif;
+          }
+        }
+      }
     }
   }
+  .right-side {
+    position: relative;
+    overflow-y: scroll;
+    background-color: #fff;
+    border-right: 2px solid rgba(0, 0, 0, 0.5) ;
 
-  img {
-    float: left;
-    width: 50px;
-  }
+    form {
+      position: fixed;
+      bottom: 74px;
+    }
 
-  .about {
-    padding-left: 8px;
-  }
-}
+    .messages {
+      .my-message {
+        width: 100%;
+        display: flex;
+        justify-content: flex-end;
 
-.chat-messages {
-  position: relative;
-  overflow-y: scroll;
-  background-color: #314051;
-  border-top-right-radius: 20px;
-  border-bottom-right-radius: 20px;
-
-  form {
-    position: fixed;
-    bottom: 74px;
-
-  }
-
-  .messages {
-    .my-message {
-      width: 100%;
-      display: flex;
-      justify-content: flex-end;
-
-      .my-message-content {
-        width: 200px;
+        .my-message-content {
+          width: 200px;
+        }
       }
     }
   }
