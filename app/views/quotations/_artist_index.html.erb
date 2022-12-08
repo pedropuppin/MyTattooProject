@@ -19,6 +19,9 @@
         <div class="card-links">
           <%= link_to "informações", quotation_path(quotation) %>
         </div>
+        <%= link_to quotation_path(quotation), class: "delete", data: { turbo_method: :delete, turbo_confirm: "Tem certeza que quer deletar o registro dessa sessão?" } do %>
+          <i class="fa-solid fa-trash"></i>
+        <% end %>
       </div>
     </div>
   <% end %>

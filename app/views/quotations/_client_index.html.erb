@@ -1,3 +1,4 @@
+<div class="quotation-cards">
 <% @quotations.order(created_at: :desc).each do | quotation | %>
   <% artist = User.find(quotation.artist_id) %>
   <% user = User.find(quotation.user_id) %>
@@ -13,7 +14,7 @@
 
     <div class="card-product-infos">
       <h2>Nome do artista: <%= artist.first_name %></h2>
-      <p><strong>Sua ideia:</strong> <%= quotation.description %></p>
+      <p><strong>Ideia da tattoo:</strong> <%= quotation.description %></p>
       <p><strong>Data:</strong> <%= quotation.date %></p>
       <div class="card-links">
         <%= link_to "informações", quotation_path(quotation), class: "mb-4" %>
