@@ -27,15 +27,15 @@
   <hr class="mt-5 mb-4">
 
   <div class="d-flex justify-content-center">
-    <% unless @user == current_user %>
+    <% if @user != current_user && current_user.role = "client" %>
       <div class="d-flex justify-content-around">
         <%= link_to "Pedir orçamento", new_artist_quotation_path(@user), class: 'mx-3 btn btn-ghost' %>
       </div>
     <% end %>
     <% if user_signed_in? %>
         <%= link_to "Criar postagem", new_post_path, class: 'mx-3 btn btn-ghost' if current_user.role == "artist" && @user == current_user %> <br>
-        <%= link_to "Mensagens", messages_index_path, class:"mx-3 btn btn-ghost" %> <br>
-        <%= link_to "Meus projetos", artist_quotations_path(current_user), class:"mx-3 btn btn-ghost" %>
+        <%= link_to "Mensagens", messages_index_path, class:"mx-3 btn btn-ghost" if @user == current_user %> <br>
+        <%= link_to "Meus projetos", artist_quotations_path(current_user), class:"mx-3 btn btn-ghost" if @user == current_user %>
     <% end %>
   </div>
 </div>
