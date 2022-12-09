@@ -1,6 +1,6 @@
 .btn-ghost {
-  color: #4A4A4A;
-  border: 1px solid #4A4A4A;
+  color: #ffffff;
+  border: 1px solid #ffffff;
   padding: 8px 24px;
   border-radius: 50px;
   font-weight: lighter;
@@ -10,7 +10,8 @@
 }
 
 .btn-ghost:hover {
-  color: #1f1f1f;
+  color: #ffffff;
+  border: 1px solid #ffffff;
   opacity: 1;
 }
 
@@ -68,4 +69,75 @@
 .btn-delete:hover {
   opacity: 1;
   color: rgb(192, 22, 22);
+}
+
+.btn-home {
+  color: #b1b1b1;
+  border: 1px solid #b1b1b1;
+  padding: 8px 24px;
+  font-weight: lighter;
+  opacity: 0.8;
+  transition: opacity 0.3s ease;
+  text-decoration: none;
+  transform: scale(1.1);
+  transition: all 0.3s ease-in;
+}
+
+.btn-home:hover {
+  color: #ffffff;
+  border: 1px solid #ffffff;
+  opacity: 1;
+  transform: scale(1.2);
+  transition: all 0.3s ease-out;
+}
+
+[type="radio"]:checked,
+[type="radio"]:not(:checked) {
+    position: absolute;
+    left: -9999px;
+}
+[type="radio"]:checked + label,
+[type="radio"]:not(:checked) + label
+{
+    position: relative;
+    padding-left: 28px;
+    cursor: pointer;
+    line-height: 20px;
+    display: inline-block;
+    color: white;
+}
+[type="radio"]:checked + label:before,
+[type="radio"]:not(:checked) + label:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 18px;
+    height: 18px;
+    border: 1px solid #ddd;
+    border-radius: 100%;
+    background: #fff;
+}
+[type="radio"]:checked + label:after,
+[type="radio"]:not(:checked) + label:after {
+    content: '';
+    width: 12px;
+    height: 12px;
+    background: #353434;
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    border-radius: 100%;
+    -webkit-transition: all 0.2s ease;
+    transition: all 0.2s ease;
+}
+[type="radio"]:not(:checked) + label:after {
+    opacity: 0;
+    -webkit-transform: scale(0);
+    transform: scale(0);
+}
+[type="radio"]:checked + label:after {
+    opacity: 1;
+    -webkit-transform: scale(1);
+    transform: scale(1);
 }

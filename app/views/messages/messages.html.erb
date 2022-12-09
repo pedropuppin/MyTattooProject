@@ -1,16 +1,40 @@
-<div class="container" data-controller="quotation-subscription" data-quotation-subscription-quotation-id-value="<%= @quotation.id %>">
-  <div class="messages" data-quotation-subscription-target="messages">
-      <% @quotation.messages.each do |message| %>
-        <%= render "messages/message", message: message %>
+<% @quotation = quotation if quotation.present? %>
+<div class="messages-controller" data-controller="quotation-subscription" data-quotation-subscription-quotation-id-value="<%= @quotation.id %>">
+  <div class="header">
+    <div class="img-text">
+      <% if current_user.role == 'client' %>
+        <div class="user-img">
+          <%= render partial: "shared/user_photo", locals: { photo: quotation.artist.photo } %>
+        </div>
+        <h4>Sua conversa com <%= @quotation.artist.first_name.capitalize %></h4>
+      <% else %>
+        <div class="user-img">
+          <%= render partial: "shared/user_photo", locals: { photo: quotation.user.photo } %>
+        </div>
+        <h4>Sua conversa com <%= @quotation.user.first_name.capitalize %></h4>
       <% end %>
+      <%= link_to user_profile_path(@quotation.user) do %>
+        <i class="fa-regular fa-user"></i>
+      <% end %>
+    </div>
   </div>
 
-  <%= simple_form_for [@quotation, @message], html: { data: { action: "turbo:submit-end->quotation-subscription#resetForm" }, class: "d-flex"} do |f| %>
-    <%= f.input :content,
-      label: false,
-      placeholder: "Fale alguma coisa!",
-      wrapper_html: {class: "flex-grow-1"}
-    %>
-    <%= f.submit "Send", class: "btn btn-primary mb-3" %>
-  <% end %>
+  <div class="messages overflow-auto" data-quotation-subscription-target="messages">
+    <% @quotation.messages.each do |message| %>
+      <%= render "messages/message", message: message %>
+    <% end %>
+  </div>
+
+  <div class="chat-box">
+    <%= simple_form_for [@quotation, message], html: { data: { action: "turbo:submit-end->quotation-subscription#resetForm" }, class: "d-flex"} do |f| %>
+      <div class="chat-form-input">
+        <%= f.input :content,
+          label: false,
+          placeholder: "Fale alguma coisa!",
+          wrapper_html: {class: "flex-grow-1"}
+        %>
+        <button class="chat-form-submit">Send</button>
+      </div>
+    <% end %>
+  </div>
 </div>

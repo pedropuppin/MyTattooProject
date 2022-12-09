@@ -11,11 +11,12 @@ class ApplicationController < ActionController::Base
   after_action :verify_policy_scoped, only: :index, unless: :skip_pundit?
 
   # Uncomment when you *really understand* Pundit!
-  # rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
-  # def user_not_authorized
-  #   flash[:alert] = "You are not authorized to perform this action."
-  #   redirect_to(root_path)
-  # end
+   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
+
+  def user_not_authorized
+    flash[:alert] = "You are not authorized to perform this action."
+    redirect_to(root_path)
+  end
 
   private
 
@@ -26,7 +27,7 @@ class ApplicationController < ActionController::Base
   def dispatch_user
     return unless current_user && request.get?
 
-    path = new_addresses_path if current_user.role == "artist" && current_user.address.nil?
+    path = new_address_path if current_user.role == "artist" && current_user.address.nil?
 
     redirect_to path unless path.nil? || path == request.path
   end

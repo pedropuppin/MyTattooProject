@@ -1,13 +1,36 @@
 class PostsController < ApplicationController
   before_action :set_post, only: %i[show edit update destroy]
   skip_before_action :authenticate_user!, only: %i[index show]
+  after_action :verify_policy_scoped, only: :index
 
   def index
-    @posts = Post.group_em(policy_scope(Post).reverse, 4)
+    @user = current_user
+    @comment = Comment.new
+    authorize @comment, policy_class: CommentPolicy
+
+    if params[:query].present?
+      skip_policy_scope
+      collection_posts = []
+      collection_posts << Post.search_by_tag(params[:query])
+      collection_posts << Post.search_by_content(params[:query])
+      User.search_by_user(params[:query]).each { |user| collection_posts << user.posts }
+      User.search_by_address(params[:query]).each { |user| collection_posts << user.posts }
+      @posts = []
+      collection_posts.each do |collection_post|
+        collection_post.each do |post|
+          @posts << post
+        end
+      end
+      @posts
+    else
+      @posts = policy_scope(Post).order(created_at: :desc)
+    end
   end
 
   def show
     authorize @post
+    @comment = Comment.new
+    authorize @comment, policy_class: CommentPolicy
   end
 
   def new
@@ -22,7 +45,7 @@ class PostsController < ApplicationController
     authorize @post
 
     if @post.save
-      redirect_to post_path(@post)
+      redirect_to posts_path
     else
       render :new, status: :unprocessable_entity
     end
@@ -44,7 +67,7 @@ class PostsController < ApplicationController
   def destroy
     authorize @post
     @post.destroy
-    redirect_to root_path
+    redirect_to posts_path
   end
 
   private
@@ -54,6 +77,6 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit(:content, :photo)
+    params.require(:post).permit(:content, :photo, :tag_list)
   end
 end

@@ -1,7 +1,17 @@
-<div class="container">
-  <%= simple_form_for @post do |f| %>
-    <%= f.input :content, as: :text, label: 'Comment', placeholder: 'Say something about your tattoo!' %>
-    <%= f.input :photo, as: :file %>
-    <%= f.submit class: 'btn btn-primary'%>
-  <% end %>
+<div class="row min-vh-100">
+  <div class="col-5 bg-img"></div>
+  <div class="col-7 mt-5 d-flex align-items-center p-5">
+    <div class="form-container">
+      <h2>Crie seu post</h2>
+      <%= simple_form_for @post do |f| %>
+        <%= f.input :content, as: :text, label: 'Descrição', placeholder: 'Diga algo sobre sua tatuagem!' %>
+        <%= f.input :photo, as: :file, label: 'Foto' %>
+        <%= f.input :tag_list, label: 'Coloque uma tag de estilo', placeholder: "Ex: pontilhismo", include_hidden: false, collection: Tag::TAG %>
+        <div class="form-actions" id="create-post-form">
+          <b><%= f.button :submit, "Criar post", class: "form-btn" %></b>
+          <%= link_to 'Cancelar', :back, class: "btn btn-flat" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
 </div>

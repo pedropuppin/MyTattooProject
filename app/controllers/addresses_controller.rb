@@ -8,7 +8,7 @@ class AddressesController < ApplicationController
     @address = Address.new(address_params)
     @address.user = current_user
     if @address.save
-      redirect_to root_path
+      redirect_to posts_path
     else
       render :new, status: :unprocessable_entity
     end
@@ -16,20 +16,24 @@ class AddressesController < ApplicationController
   end
 
   def edit
-    @address = current_user.address
+    @address = Address.find(params[:id])
     authorize @address
   end
 
   def update
-    @address = current_user.address
+    @address = Address.find(params[:id])
     @address.update(address_params)
     authorize @address
-    redirect_to edit_user_registration_path
+    if @address.save
+      redirect_to user_profile_path(current_user)
+    else
+      render :edit, status: :unprocessable_entity
+    end
   end
 
   private
 
   def address_params
-    params.require(:address).permit(:zipcode, :country, :city, :street, :number, :neighborhood, :state )
+    params.require(:address).permit(:zipcode, :country, :city, :street, :number, :neighborhood, :state)
   end
 end

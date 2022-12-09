@@ -12,15 +12,13 @@ export default class extends Controller {
       { received: data => this.#insertMessageAndScrollDown(data) }
     )
     setTimeout(() => {
-      window.scrollTo({top: document.body.scrollHeight, behavior: "smooth"});
-      console.warn("warn");
+      this.messagesTarget.scrollTo(0, this.messagesTarget.scrollHeight);
     }, 10);
-    console.log("iaeee");
   }
 
   #insertMessageAndScrollDown(data) {
     this.messagesTarget.insertAdjacentHTML("beforeend", data);
-    window.scrollTo({top: document.body.scrollHeight, behavior: "smooth"});
+    this.messagesTarget.scrollTo(0, this.messagesTarget.scrollHeight);
   }
 
   resetForm(event) {

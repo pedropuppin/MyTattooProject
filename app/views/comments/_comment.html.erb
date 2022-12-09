@@ -1,0 +1,18 @@
+<div id="comment-<%= comment.id %>" class="comment-box my-2">
+  <div class="d-flex justify-content-between align-items-center">
+    <div class="d-flex align-items-center">
+      <% if comment.user.photo.attached? %>
+        <%= cl_image_tag comment.user.photo.key, transformation: [{gravity: "face", height: 400, width: 400, crop: "thumb"}], class: "avatar" %>
+      <% else %>
+        <%= image_tag "https://cdn-icons-png.flaticon.com/512/149/149071.png", class: "avatar" %>
+      <% end %>
+        <small class="ms-2">
+          <strong><%= comment.user.full_name %></strong>
+        </small>
+    </div>
+    <small class="me-3">
+      <i><%= distance_of_time_in_words_to_now(comment.created_at) %> ago</i>
+    </small>
+  </div>
+  <p class="ms-5 me-2"><%= comment.content %></p>
+</div>

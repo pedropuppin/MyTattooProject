@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
-  resource :addresses, only: %i[new create edit update]
+  resources :addresses, only: %i[new create edit update]
   resources :artists, only: [] do
     resources :quotations, only: %i[index new create]
   end
@@ -12,9 +12,11 @@ Rails.application.routes.draw do
   get 'profiles/:user_id', to: 'profiles#show', as: :user_profile
   root to: "pages#home"
 
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   resources :posts do
-    resource :comments, only: :create
+    resources :comments, except: :index
+    resources :likes, only: :create
   end
-  resource :comments, only: %i[edit update destroy]
+  resources :comments, only: %i[edit update destroy]
+  resources :likes, only: %i[destroy]
+  resources :tags
 end

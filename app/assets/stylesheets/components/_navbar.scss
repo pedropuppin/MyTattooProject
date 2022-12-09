@@ -1,12 +1,99 @@
 .navbar-lewagon {
   justify-content: space-between;
-  background: white;
+  padding: 18px 0;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 9999;
+
+  .navbar-brand {
+    width: 5%;
+    float: left;
+
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  .navbar-collapse {
+    flex-grow: 0;
+    margin-right: 70px;
+  }
+
+
+  .navbar-nav .nav-link  {
+    font-weight: 400;
+    color: #fff !important;
+    letter-spacing: 0.8px;
+    padding: 0 25px;
+    font-size: 17px;
+    opacity: 0.75;
+  }
+
+  .search-bar {
+    margin-left: 200px;
+
+    .form-control {
+      border-top-left-radius: 20px;
+      border-bottom-left-radius: 20px;
+      width: 350px;
+    }
+
+    .form-submit {
+      width: 65px;
+      height: 42px;
+      color: #fff;
+      background: rgba(217, 217, 217, 0.1);
+      display: inline-flex;
+      border-radius: 30px;
+      margin-right: 6px;
+      align-items: center;
+      justify-content: center;
+      line-height: 1;
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      opacity: 0.7;
+      transition: all 0.5s;
+    }
+
+    .form-submit:hover {
+      opacity: 1;
+      transition: all 0.5s;
+    }
+  }
 }
 
-.navbar-lewagon .navbar-collapse {
-  flex-grow: 0;
+.navbar {
+  transition: all 0.5s;
 }
 
-.navbar-lewagon .navbar-brand img {
-  width: 40px;
+.navbar-scrolled {
+  background-color: #000000;
+}
+
+.hide-block {
+  display: none;
+}
+
+@media (max-width: 990px) {
+  /* For a screen < 720px, this CSS will be read */
+  .navbar-nav {
+    background-color: #141414;
+
+    .nav-item {
+      padding: 10px;
+    }
+  }
+
+  .profile-img {
+    display: none;
+  }
+
+  .navbrand-hide {
+    display: none;
+  }
+}
+
+.escape-navbar {
+  margin-top: 105px;
 }

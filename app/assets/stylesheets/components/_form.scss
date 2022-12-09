@@ -1,0 +1,154 @@
+.center-from {
+  margin: auto;
+}
+
+#edit-form-heigt {
+  margin-top: 106px;
+  margin-bottom: auto;
+}
+
+#bigger-form-container {
+  width: 680px;
+}
+
+.form-container {
+  color: white;
+  margin: auto;
+  width: 550px;
+  border: 1px solid #fff;
+  border-radius: 20px;
+  padding: 50px;
+  background-color: #121212;
+
+  h2 {
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 40px;
+  }
+
+  p {
+    text-align: center;
+  }
+
+  .form-infos {
+    a{
+      text-decoration: none;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .radio-btn-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      justify-items: center;
+    }
+  }
+
+  .form-actions {
+    .form-btn {
+      background-color: #00a396;
+      border-radius: 20px;
+      width: 100%;
+      margin-bottom: 15px;
+    }
+
+    .form-btn:hover {
+      background-color: #00C9B7;
+      transition: all 0.3s;
+    }
+  }
+
+  .form-btn-small {
+    color: #fff;
+    background-color: #00a396;
+    border-radius: 20px;
+  }
+
+  .form-btn-small:hover {
+    background-color: #00C9B7;
+    transition: all 0.3s;
+  }
+
+  #create-post-form a {
+    background-color: #424649;
+    border-radius: 20px;
+    width: 100%;
+  }
+
+  #create-post-form a:hover {
+    background-color: #b32222;
+  }
+
+  #edit-account-form button{
+    background-color: #b32222;
+    opacity: 0.6;
+    border-radius: 20px
+  }
+
+  #edit-account-form button:hover{
+    background-color: #ff0000;
+    opacity: 1;
+    transition: all 0.3s;
+  }
+
+  #edit-account-form a {
+    color: #fff;
+    background-color: #00a396;
+    border-radius: 20px;
+  }
+
+  #edit-account-form a:hover {
+    background-color: #00C9B7;
+    transition: all 0.3s;
+  }
+
+  .form-txt{
+    color: white;
+  }
+}
+
+.form-control {
+  border-radius: 20px
+}
+
+.form-select {
+  border-radius: 20px
+}
+
+.background {
+  background-size: cover;
+  background-position: center;
+  background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('tattoobg.jpg');
+  background-repeat: no-repeat;
+}
+
+.bg-img {
+    background-size: cover;
+    background-image:linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url("https://tristero.qodeinteractive.com/dark/wp-content/uploads/2020/03/contact-title-img.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.logo {
+  background-size: cover;
+  background-position: center;
+  margin-bottom: 24px;
+  width: 250px;
+  height: 250px;
+  margin: auto;
+  display: block;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+
+abbr[title="required"] {
+  display: none;
+}

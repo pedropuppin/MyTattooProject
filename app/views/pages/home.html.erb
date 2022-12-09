@@ -1,5 +1,22 @@
-<div class="container">
-  <h1>Pages#home</h1>
-  <p>Find me in app/views/pages/home.html.erb</p>
-  <%= render 'posts/grid', posts: @posts %>
+<div class="home-page">
+  <div class="banner">
+    <div class="container">
+      <span><i>my</i></span>
+      <h1>TATTOO PROJECT</h1>
+      <p>Achar seu novo tatuador nunca foi tão fácil</p>
+      <%= link_to "Explorar", posts_path, class: "btn btn-home" %>
+    </div>
+  </div>
+
+  <div class="production">
+    <div class="dev-banner">
+      <div class="dev-text">
+        <h1 id="dev-h1">Desenvolvedores</h1>
+        <span id="dev-span"><i>powered by LeWagon</i></span>
+      </div>
+      <div class="developers" id="desenvolvedores" data-aos="zoom-in">
+        <%= render "dev_infos" %>
+      </div>
+    </div>
+  </div>
 </div>

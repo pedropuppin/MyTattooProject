@@ -1,8 +1,13 @@
-<div id="message-<%= message.id %>">
-  <small>
-    <strong><%= message.user.first_name %></strong>
-    <i><%= message.created_at.strftime("%a %b %e at %l:%M %p") %></i>
-  </small>
-  <p><%= message.content %></p>
+<div class="<%= current_user == message.user ? "my-message" : "user-message" %>" id="message-<%= message.id %>">
+  <div class="message-content">
+    <div class="user-img">
+      <% if message.user.photo.attached? %>
+        <%= cl_image_tag message.user.photo.key, transformation: [{gravity: "face", height: 400, width: 400, crop: "thumb"}] %>
+      <% else %>
+        <%= image_tag "https://cdn-icons-png.flaticon.com/512/149/149071.png", class: "avatar" %>
+      <% end %>
+      <h4><%= message.user.first_name.capitalize %></h4>
+    </div>
+    <p></span><%= message.content %><br><span><%= distance_of_time_in_words_to_now(message.created_at) %></p>
+  </div>
 </div>
-

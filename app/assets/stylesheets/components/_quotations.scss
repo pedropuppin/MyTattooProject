@@ -1,0 +1,43 @@
+.quotations-index {
+  min-height: 100vh;
+  margin-top: 150px;
+}
+
+.quotations-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 20px;
+
+  .quotation-cards {
+    .card-content {
+      .card-img{
+        width: 140px;
+        border-radius: 50%;
+        padding: 3px;
+        background: #202C33;
+
+        img {
+          height: 100%;
+          width: 100%;
+          border-radius: 50%;
+          border: 1px solid #fff;
+        }
+      }
+    }
+  }
+}
+
+
+.card-contetn .delete{
+  color: black;
+  background: none;
+  transition: background .5s;
+  position: absolute;
+  top: 5px;
+  right: 5px;
+}
+
+.card-contetn .delete:hover{
+  background: none;
+  color: rgba(255, 0, 0, 0.75);
+}

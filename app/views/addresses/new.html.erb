@@ -1,17 +1,21 @@
-<div class="container">
-  <div class="row justify-content-center align-items-center min-vh-100">
-    <div class="col-6 border rounded p-5 bg-white">
+<div class="container center-from">
+  <div class="form-container" id="bigger-form-container">
+    <div class="form-infos">
+      <h2>Iforme aonde você realiza seus atendimentos</h2>
       <%= simple_form_for @address do |f|%>
-        <%= f.input :zipcode, input_html: { onblur: "pesquisacep(this.value)" } %>
-        <%= f.input :street %>
-        <%= f.input :number %>
-        <%= f.input :neighborhood %>
-        <%= f.input :city %>
-        <%= f.input :state %>
-        <%= f.input :country, as: :string %>
+        <%= f.input :zipcode, label: "CEP", input_html: { onblur: "pesquisacep(this.value)" } %>
+        <div class="form-grid">
+          <%= f.input :street, label: "Rua" %>
+          <%= f.input :number, label: "Número" %>
+          <%= f.input :neighborhood, label: "Bairro" %>
+          <%= f.input :city, label: "Cidade" %>
+        </div>
+        <%= f.input :state, label: "Estado" %>
+        <%= f.input :country, label: "País", as: :string %>
 
-        <div class="form-actions">
-          <%= f.button :submit, "Submit", class: "btn btn-dark" %>
+        <div class="form-actions" id="create-post-form">
+          <%= f.button :submit, "Confirmar", class: "form-btn" %>
+          <%= link_to 'Voltar', root_path, class: "btn btn-flat" %>
         </div>
 
       <% end %>

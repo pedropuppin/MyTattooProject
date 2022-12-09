@@ -4,10 +4,20 @@ class Quotation < ApplicationRecord
   has_many :messages, dependent: :destroy
   has_many_attached :photos
 
-  SIZES = ['Small', 'Medium', 'Large']
+  after_create :auto_message
+
+  SIZES = ['Pequena (3cm ~ 10cm)', 'Média (10cm ~ 15cm)', 'Grande (15 cm ou mais)']
   PLACEMENT = %w[
     Tornozelo Costas(fechamento) Costas(superior) Canela Costas(inferior) Panturrilha Peito Cotovelo
     Antebraço(interno) Antebraço(externo) Superior-Braço(interno) Superior-Braço(externo) Deltóide Braço(fechamento) Pé
     Mão(superior) Mão(palma) Quadril Joelho Pescoço Queixo Barriga Coxa(frontal) Coxa(posterior) Pulso Outro
   ].sort
+
+  def auto_message
+    message = "Olá #{artist.first_name}\n" \
+              "Local da tattoo: #{placement}"
+    Message.create(
+      content: message, user_id:, quotation_id: id
+    )
+  end
 end

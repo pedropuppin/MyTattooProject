@@ -1,26 +1,67 @@
-<div class="container">
-  <h1>Suas conversas</h1>
-
-  <span class="mb-2 d-block"><small><em class="text-muted"><%= "Você não marcou nenhum projeto ainda!" if @quotations.empty? %></em></small></span>
-  <%= link_to 'Back', :back %>
-  <div class="container quotation">
-    <div class="messages">
-      <% @quotations.each do |quotation| %>
-        <%= link_to messages_path(quotation) do %>
-          <div id="quotation-<%= quotation.id %>">
-            <small>
+<div class="container messages-container">
+  <div class="messages-grid">
+    <div class="left-side">
+      <div class="header">
+        <div class="icon">
+          <%= link_to user_profile_path(current_user) do %>
+            <i class="fa-solid fa-xmark"></i>
+          <% end %>
+        </div>
+        <div class="text">
+          <h2>Conversas</h2>
+        </div>
+      </div>
+      <div class="chat-list overflow-auto">
+        <%# <div id="quotation-<%= quotation.id %>
+        <% @quotations.reverse.each do |quotation| %>
+          <%= link_to messages_index_path(quotation_id: quotation.id), calss: "block" do %>
+            <div class="block">
               <% if current_user.role == 'client' %>
-                <strong><%= quotation.artist.first_name %></strong>
+                <div class="img-bx">
+                  <%= render partial: "shared/user_photo", locals: { photo: quotation.artist.photo } %>
+                </div>
+                <div class="details">
+                  <div class="quotation-head">
+                    <h4><%= quotation.artist.full_name %></h4>
+                    <p class="time"><%= distance_of_time_in_words_to_now(quotation.created_at) %></p>
+                  </div>
+                  <div class="message-content">
+                    <p><%= quotation.messages.last&.content&.truncate(10) %></p>
+                  </div>
+                </div>
               <% else %>
-                <strong><%= quotation.user.first_name %></strong>
+                <div class="img-bx">
+                  <%= render partial: "shared/user_photo", locals: { photo: quotation.user.photo } %>
+                </div>
+                <div class="details">
+                  <div class="quotation-head">
+                    <h4><%= quotation.user.full_name %></h4>
+                    <p class="time"><%= distance_of_time_in_words_to_now(quotation.created_at) %></p>
+                  </div>
+                  <div class="message-content">
+                    <p><%= quotation.messages.last&.content&.truncate(10) %></p>
+                  </div>
+                </div>
               <% end %>
-              <i><%= quotation.created_at.strftime("%a %b %e at %l:%M %p") %></i>
-            </small>
-
-            <p><%= quotation.messages.last&.content&.truncate(10) %></p>
-          </div>
+            </div>
+          <% end %>
         <% end %>
+      </div>
+    </div>
+
+    <div class="right-side h-100">
+      <% if params[:quotation_id].present? %>
+        <%= render template: "messages/messages", locals: { quotation: @quotations.find(params[:quotation_id]), message: Message.new } %>
+      <% else %>
+        <span class="select-message"><small><em><%= @quotations.empty? ? "Você não marcou nenhum projeto ainda!" : "Selecione uma conversa!" %></em></small></span>
       <% end %>
     </div>
   </div>
 </div>
+
+<%# <script>
+  document.addEventListener('click', () => {
+    document.querySelector('.block').classList.remove('active')
+    document.querySelector('.block').classList.add('active')
+  })
+</script> %>

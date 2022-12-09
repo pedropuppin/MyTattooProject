@@ -16,14 +16,14 @@ class QuotationsController < ApplicationController
     @artist = User.find(params[:artist_id])
     authorize @quotation
   end
-  
+
   def create
     @artist = User.find(params[:artist_id])
     @quotation = Quotation.new(quotations_params)
     @quotation.artist = @artist
     @quotation.user = current_user
     if @quotation.save
-      redirect_to quotation_messages_path(@quotation) # redirecionar para o chat de conversa (rota - quotation_message_path)
+      redirect_to messages_index_path(quotation_id: @quotation.id) # redirecionar para o chat de conversa (rota - quotation_message_path)
     else
       render :new, status: :unprocessable_entity
     end
