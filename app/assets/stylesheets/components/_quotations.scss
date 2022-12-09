@@ -2,42 +2,95 @@
   min-height: 100vh;
   margin-top: 150px;
 }
-
 .quotations-grid {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   gap: 20px;
-
-  .quotation-cards {
-    .card-content {
-      .card-img{
-        width: 140px;
-        border-radius: 50%;
-        padding: 3px;
-        background: #202C33;
-
-        img {
-          height: 100%;
-          width: 100%;
+  .cards-wraper {
+    .card-card{
+      border-radius: 25px;
+      background: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      overflow: hidden;
+      width: 100%;
+      height: 100%;
+      .card-product-infos {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        h2 {
+          font-size: 18px;
+          font-family: "Roboto", sans-serif;
+          font-weight: 600;
+          color: #333;
+        }
+        p {
+          font-size: 16px;
+          color: #707070;
+          text-align: center;
+          font-family: "Roboto", sans-serif;
+        }
+      }
+      .card-time {
+        background: #333;
+        width: 100%;
+        p{
+          font-size: 14px;
+          color: #fff;
+          text-align: center;
+          margin-top: 17px;
+        }
+      }
+      .image-content{
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 10px 14px;
+        row-gap: 5px;
+        margin-bottom: 5px;
+        .card-icon {
+          position: absolute;
+          display: flex;
+          flex-direction: column;
+          top: 18px;
+          right: -40px;
+          row-gap: 8px;
+          .delete{
+            color: #707070;
+            opacity: 0.6;
+          }
+          .chat-link{
+            color: #707070;
+            opacity: 0.6;
+          }
+          .chat-link:hover{
+            color: rgb(37, 66, 61);
+            transition: all 0.3s;
+            opacity: 1;
+          }
+          .delete:hover{
+            color: rgba(255, 0, 0, 0.75);
+            transition: all 0.3s;
+            opacity: 1;
+          }
+        }
+        .card-image{
+          position: relative;
+          height: 150px;
+          width: 150px;
           border-radius: 50%;
-          border: 1px solid #fff;
+          row-gap: 10px;
+          img {
+            height: 100%;
+            width: 100%;
+            border-radius: 50%;
+            border: 4px solid blue;
+          }
         }
       }
     }
   }
-}
-
-
-.card-contetn .delete{
-  color: black;
-  background: none;
-  transition: background .5s;
-  position: absolute;
-  top: 5px;
-  right: 5px;
-}
-
-.card-contetn .delete:hover{
-  background: none;
-  color: rgba(255, 0, 0, 0.75);
 }

@@ -1,2 +1,22 @@
-<h1 class="escape-navbar text-center">Posts tagged with <%= @tag.name.capitalize %></h1>
+<div class="container escape-navbar">
+  <div class="d-flex justify-content-center">
+    <div>
+      <%= image_tag "styles/#{@tag.name }.jpg", class: "tag-preview" %>
+    </div>
+    <div class="ms-5 tag-description-box overflow-auto">
+      <h1><%= @tag.name.capitalize %></h1>
+      <p class="mt-3">
+        <%= Tag::jujubinha(@tag.name) %>
+      </p>
+    </div>
+  </div>
+</div>
+
+  <hr class="mt-5 mb-4">
+
+<h2 class="text-center text-light text-muted">
+  <i class="fa-solid fa-arrow-down mx-5"></i>
+  Posts tagged with <%= @tag.name.capitalize %>
+  <i class="fa-solid fa-arrow-down mx-5"></i>
+</h2>
 <%= render "posts/post_grid", posts: @tag.posts %>

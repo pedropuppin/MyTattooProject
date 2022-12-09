@@ -1,3 +1,14 @@
-<div class="escape-navbar">
-  <%= render "post_grid", posts: @posts %>
+<div class="container escape-navbar">
+  <button class="btn btn-dark" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+    Buscar por estilos
+  </button>
+  <div class="collapse" id="collapseExample">
+    <div class="mt-2">
+      <% Tag.all.each do |tag| %>
+        <%= link_to tag.name, tag_path(tag.id), class: 'btn btn-ghost mx-2 my-2' %>
+      <% end %>
+    </div>
+  </div>
 </div>
+
+<%= render "post_grid", posts: @posts %>
