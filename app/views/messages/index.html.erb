@@ -11,7 +11,7 @@
           <h2>Conversas</h2>
         </div>
       </div>
-      <div class="chat-list">
+      <div class="chat-list overflow-auto">
         <%# <div id="quotation-<%= quotation.id %>
         <% @quotations.reverse.each do |quotation| %>
           <%= link_to messages_index_path(quotation_id: quotation.id), calss: "block" do %>

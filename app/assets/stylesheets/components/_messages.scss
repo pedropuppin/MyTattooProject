@@ -19,8 +19,7 @@
 
       .chat-list {
         position: relative;
-        overflow-y: auto;
-        height: calc(100% - 1024px);
+        height: 625px;
 
         .block:hover {
           background: #202C33;
