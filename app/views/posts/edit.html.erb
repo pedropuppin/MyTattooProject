@@ -1,7 +1,9 @@
-<div class="container">
+<div class="form-container">
   <%= simple_form_for @post do |f| %>
     <%= f.input :content, as: :text, label: 'Comment', placeholder: 'Say something about your tattoo!' %>
-    <%= f.submit class: 'btn btn-primary'%>
+    <div class="form-actions" id="create-post-form">
+      <%= f.button :submit, "Editar post", class: "form-btn" %>
+      <%= link_to 'Cancelar', :back, class: "btn btn-flat" %>
+    </div>
   <% end %>
-  <%= link_to 'Back', :back %>
 </div>

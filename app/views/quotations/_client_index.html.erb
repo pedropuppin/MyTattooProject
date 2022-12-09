@@ -1,27 +1,23 @@
-<div class="quotation-cards">
-<% @quotations.order(created_at: :desc).each do | quotation | %>
-  <% artist = User.find(quotation.artist_id) %>
-  <% user = User.find(quotation.user_id) %>
-
-  <div class="card-product">
-    <div class="card-img">
-      <% if artist.photo.attached? %>
-        <%= cl_image_tag artist.photo.key, transformation: [{gravity: "face", height: 400, width: 400, crop: "thumb"}] %>
-      <% else %>
-        <%= image_tag "https://cdn-icons-png.flaticon.com/512/149/149071.png" %>
-      <% end %>
-    </div>
-
-    <div class="card-product-infos">
-      <h2>Nome do artista: <%= artist.first_name %></h2>
-      <p><strong>Ideia da tattoo:</strong> <%= quotation.description %></p>
-      <p><strong>Data:</strong> <%= quotation.date %></p>
-      <div class="card-links">
-        <%= link_to "informações", quotation_path(quotation), class: "mb-4" %>
-      </div>
-      <%= link_to quotation_path(quotation), class: "delete", data: { turbo_method: :delete, turbo_confirm: "Tem certeza que quer deletar o registro dessa sessão?" } do %>
-        <i class="fa-solid fa-trash"></i>
-      <% end %>
-    </div>
+<div class="image-content">
+  <div class="card-image">
+    <%= render partial: "shared/user_photo", locals: { photo: quotation.artist.photo } %>
   </div>
-<% end %>
+  <div class="card-icon">
+    <%= link_to quotation_path(quotation), class: "delete", data: { turbo_method: :delete, turbo_confirm: "Tem certeza que quer deletar o registro dessa sessão?" } do %>
+      <i class="fa-solid fa-trash"></i>
+    <% end %>
+    <%= link_to messages_index_path, class: "chat-link" do %>
+      <i class="fa-solid fa-comment"></i>
+    <% end %>
+    <%= link_to user_profile_path(quotation.artist), class: "chat-link" do %>
+      <i class="fa-solid fa-user"></i>
+    <% end %>
+  </div>
+</div>
+<div class="card-product-infos">
+  <h2>Seu tatuador: <%= quotation.artist.first_name %></h2>
+  <p><strong>Descrição:</strong> <%= quotation.description %></p>
+</div>
+<div class="card-time">
+  <p>Data: <%= quotation.date.strftime('%d/%m/%y') %></p>
+</div>
